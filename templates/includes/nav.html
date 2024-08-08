@@ -1,0 +1,21 @@
+{% load static %}
+<nav class="navbar bg-body-tertiary navbar-expand-md fixed-top d-none d-md-flex">
+    <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" alt="Logo" class="logo "></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar3"
+        aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-start" tabindex="+1" id="offcanvasNavbar3" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <form class="d-flex mt-3 d-block d-md-none" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <div class="offcanvas-body ">
+            {% include 'includes/nav-items.html' %}
+        </div>
+    </div>
+</nav>

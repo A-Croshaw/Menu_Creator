@@ -1,100 +1,78 @@
 {% load static %}
-    <ul class="navbar-nav justify-content-evenly flex-grow-1 d-none d-md-flex">
-        <li class="nav-item p-0 m-0">
-            <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" alt="Logo" class="logo logo-bg"></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link nav-txt {% if url_name == 'home' %}active-link{% endif %}" aria-current="page"
+<ul class="navbar-nav justify-content-evenly flex-grow-1">
+    <li class="nav-item">
+        <a class="nav-link nav-txt {% if url_name == 'home' %}active-link{% endif %}" aria-current="page"
             href="{% url 'home' %}">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Menus
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">View Menus</a></li>
-                <li><a class="dropdown-item" href="#">Add Menu</a></li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Starters
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">View Recipes</a></li>
-                <li><a class="dropdown-item" href="#">Add Recipe</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Dishes</a></li>
-                <li><a class="dropdown-item" href="#">Add Dish</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Sauces</a></li>
-                <li><a class="dropdown-item" href="#">Add Sauces</a></li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-               Mains
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">View Recipes</a></li>
-                <li><a class="dropdown-item" href="#">Add Recipe</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Dishes</a></li>
-                <li><a class="dropdown-item" href="#">Add Dish</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Sauces</a></li>
-                <li><a class="dropdown-item" href="#">Add Sauces</a></li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-               Sides
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">View Recipes</a></li>
-                <li><a class="dropdown-item" href="#">Add Recipe</a></li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-               Desserts
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">View Recipes</a></li>
-                <li><a class="dropdown-item" href="#">Add Recipe</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Dishes</a></li>
-                <li><a class="dropdown-item" href="#">Add Dish</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Sauces</a></li>
-                <li><a class="dropdown-item" href="#">Add Sauces</a></li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Products
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">View Products</a></li>
-                <li><a class="dropdown-item" href="#">Add Product</a></li>
-            </ul>
-        </li>
-      </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Menus
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Specials</a></li>
+            <li><a class="dropdown-item" href="#">Early Bird</a></li>
+            <li><a class="dropdown-item" href="#">À la carte</a></li>
+            <li><a class="dropdown-item" href="#">Create Menu</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dish Book
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">All Dishes</a></li>
+            <li><a class="dropdown-item" href="#">Main Dishes</a></li>
+            <li><a class="dropdown-item" href="#">Starter Dishes</a></li>
+            <li><a class="dropdown-item" href="#">Dessert Dishes</a></li>
+            <li><a class="dropdown-item" href="#">Side Dishes</a></li>
+            <li><a class="dropdown-item" href="#">Create Dish</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Sauce Book
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">All Sauces</a></li>
+            <li><a class="dropdown-item" href="#">Main Sauces</a></li>
+            <li><a class="dropdown-item" href="#">Starter Sauces</a></li>
+            <li><a class="dropdown-item" href="#">Dessert Sauces</a></li>
+            <li><a class="dropdown-item" href="#">Side Sauces</a></li>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Recipe Book
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Recipes</a></li>
+            <li><a class="dropdown-item" href="#">Create Recipes</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Products
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Products</a></li>
+            <li><a class="dropdown-item" href="#">Add Product</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown d-none d-md-flex">
+        <a class="nav-link
+                  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+            Account
+        </a>
+        <ul class="dropdown-menu dropdown-menu-lg-end mt-1 dropdown-color">
+            <li>
+                <a class="nav-link login" aria-current="page" href="">
+                    Admin Pannel
+                </a>
+            </li>
+            <li><a class="nav-link login" href="">Logout</a></li>
+            <li><a class="nav-link login" href="">Register</a></li>
+            <li><a class="nav-link login" href="">Login</a></li>
+        </ul>
+    </li>
+</ul>

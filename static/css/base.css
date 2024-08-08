@@ -1,0 +1,39 @@
+.navbar {
+    --bs-navbar-toggler-icon-bg-ac: url("../icons/user-gear-solid.svg");
+    --bs-navbar-toggler-icon-bg: url("../icons/bars-solid.svg");
+    --bs-navbar-toggler-transition: none;
+}
+
+.navbar-toggler-icon-ac {
+    background-image: var(--bs-navbar-toggler-icon-bg-ac);
+}
+
+
+.navbar-toggler-ac {
+    border: none;
+    transition: none;
+}
+.navbar-toggler-icon {
+    width: 1.25em;
+    height: 1.25em;
+}
+
+.logo{
+    width: 3.5em;
+    height: 2.5em;
+}
+
+.side-nav-headers{
+
+}
+
+.nav-row-line{
+    color:#d9ff00;
+    border-width: 2px;
+}
+
+.nav-line{
+    color:#ff0000;
+    width: 50%;
+    border-width: 2px;
+}

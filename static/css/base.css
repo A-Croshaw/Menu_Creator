@@ -7,7 +7,7 @@
 
     /*--- Colours ---*/
     --white: #fff;
-    --nav-bg: #770b0b;
+    --nav-footer-bg: #770b0b;
     --active-page: #fffb00;
     --nav-hover: #fffb00;
 
@@ -75,7 +75,7 @@ body {
 .nav-txt:hover,
 .bg-nav-dropdowns,
 .bg-nav {
-    background-color: var(--nav-bg);
+    background-color: var(--nav-footer-bg);
 }
 
 .nav-ac-headers,
@@ -190,4 +190,28 @@ body {
 
 .side-nav-search {
     height: 30px;
+}
+
+/*------------ Footer ------------*/
+
+footer {
+    background-color: var(--nav-footer-bg);
+    height: 50px;
+}
+
+.footer-txt {
+    color: var(--white);
+    font-size: 20px;
+}
+
+.footer-txt:hover{
+    color: var(--nav-hover);
+}
+
+/*------------ Media Queries ------------*/
+
+@media (min-width: 1200px){
+    .content-offset{
+        margin-top: 60px;
+    }
 }

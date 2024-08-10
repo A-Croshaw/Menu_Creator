@@ -1,63 +1,60 @@
 {% load static %}
-<div class="row">
-    <Div class="col-12">
-        <a class="nav-link nav-txt {% if url_name == 'home' %}active-link{% endif %}" aria-current="page"
-        href="{% url 'home' %}">Home</a>
-    </Div>
+<div class="row my-1">
+    <form class="d-flex d-block d-md-none" role="search">
+        <input class="form-control side-nav-search me-1" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-side-search" type="submit">
+            <i class="fas fa-search fa-sm"></i>
+        </button>
+    </form>
 </div>
-<div class="row">
-    <hr class="nav-row-line">
-    <Div class="col-6">
-        <p class="side-nav-headers">Menus</p>
+<div class="row mt-4">
+    <div class="col-12">
+        <a class="nav-link nav-txt nav-side-headers" aria-current="page" href="{% url 'home' %}">Home</a>
         <hr class="nav-line">
-        <a class="dropdown-item" href="#">Specials</a>
-        <a class="dropdown-item" href="#">Early Bird</a>
-        <a class="dropdown-item" href="#">À la carte</a>
-        <a class="dropdown-item" href="#">Create Menu</a>
-    </Div>
-    <div class="col-6">
-        <p class="side-nav-headers">Recipe Book</p>
-        <hr class="nav-line">
-        <a class="dropdown-item" href="#">Recipes</a>
-        <a class="dropdown-item" href="#">Create Recipes</a>
     </div>
 </div>
 <div class="row mt-4">
-    <hr class="nav-row-line">
-    <Div class="col-6">
-        <p class="side-nav-headers">Dish Book</p>
-        <hr class="nav-line">
-        <a class="dropdown-item" href="#">All Dishes</a>
-        <a class="dropdown-item" href="#">Main Dishes</a>
-        <a class="dropdown-item" href="#">Starter Dishes</a>
-        <a class="dropdown-item" href="#">Dessert Dishes</a>
-        <a class="dropdown-item" href="#">Side Dishes</a>
-        <a class="dropdown-item" href="#">Create Dish</a>
-    </Div>
     <div class="col-6">
-        <p class="side-nav-headers">Sauce Book</p>
-        <hr class="nav-line">
-        <a class="dropdown-item" href="#">All Sauces</a>
-        <a class="dropdown-item" href="#">Main Sauces</a>
-        <a class="dropdown-item" href="#">Starter Sauces</a>
-        <a class="dropdown-item" href="#">Dessert Sauces</a>
-        <a class="dropdown-item" href="#">Side Sauces</a>
+        <p class="nav-side-headers m-0 p-0">Menus</p>
+        <hr class="nav-line m-0 p-0 pb-1">
+        <a class="dropdown-item nav-side-txt" href="#">Specials</a>
+        <a class="dropdown-item nav-side-txt" href="#">Early Bird</a>
+        <a class="dropdown-item nav-side-txt" href="#">À la carte</a>
+        <a class="dropdown-item nav-side-txt" href="#">Create Menu</a>
+    </div>
+    <div class="col-6">
+        <p class="nav-side-headers m-0 p-0">Recipe Book</p>
+        <hr class="nav-line m-0 p-0 pb-1">
+        <a class="dropdown-item nav-side-txt" href="#">Recipes</a>
+        <a class="dropdown-item nav-side-txt" href="#">Create Recipes</a>
     </div>
 </div>
 <div class="row mt-4">
-    <hr class="nav-row-line">
     <div class="col-6">
-        <p class="side-nav-headers"> Account</p>
-        <hr class="nav-line">
-        <a class="nav-link login" href="">Login</a>
-        <a class="nav-link login" href="">Logout</a>
-        <a class="nav-link login" href="">Register</a>
-        <a class="nav-link login" aria-current="page" href="">Admin Pannel</a> 
+        <p class="nav-side-headers m-0 p-0">Dish Book</p>
+        <hr class="nav-line m-0 p-0 pb-1">
+        <a class="dropdown-item nav-side-txt" href="#">All Dishes</a>
+        <a class="dropdown-item nav-side-txt" href="#">Main Dishes</a>
+        <a class="dropdown-item nav-side-txt" href="#">Starter Dishes</a>
+        <a class="dropdown-item nav-side-txt" href="#">Dessert Dishes</a>
+        <a class="dropdown-item nav-side-txt" href="#">Side Dishes</a>
+        <a class="dropdown-item nav-side-txt" href="#">Create Dish</a>
     </div>
-    <Div class="col-6">
-        <p class="side-nav-headers">Products</p>
-        <hr class="nav-line">
-        <a class="dropdown-item" href="#">Products</a>
-        <a class="dropdown-item" href="#">Add Product</a>
-    </Div>
+    <div class="col-6">
+        <p class="nav-side-headers m-0 p-0">Sauce Book</p>
+        <hr class="nav-line m-0 p-0 pb-1">
+        <a class="dropdown-item nav-side-txt" href="#">All Sauces</a>
+        <a class="dropdown-item nav-side-txt" href="#">Main Sauces</a>
+        <a class="dropdown-item nav-side-txt" href="#">Starter Sauces</a>
+        <a class="dropdown-item nav-side-txt" href="#">Dessert Sauces</a>
+        <a class="dropdown-item nav-side-txt" href="#">Side Sauces</a>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-6">
+        <p class="nav-side-headers m-0 p-0">Products</p>
+        <hr class="nav-line m-0 p-0 pb-1">
+        <a class="dropdown-item nav-side-txt" href="#">Products</a>
+        <a class="dropdown-item nav-side-txt" href="#">Add Product</a>
+    </div>
 </div>

@@ -1,12 +1,13 @@
 {% load static %}
-
-<header>
+<header class="container-fluid bg-nav">
     {% include 'includes/nav.html' %}
     {% include 'includes/mobile-nav.html' %}
-    <div class="container-fluid row  d-none d-md-flex" style="margin-top: 150px;">
-        <form class="d-flex mt-3" role="search">
+    <div class="row pt-1 pb-2 px-5 d-none d-md-flex d-xl-none search-nav-lg ">
+        <form class="d-md-flex nav-search px-5" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-search" type="submit">
+                <i class="fas fa-search fa-xl"></i>
+            </button>
         </form>
     </div>
 </header>

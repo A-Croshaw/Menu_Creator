@@ -1,78 +1,98 @@
 {% load static %}
 <ul class="navbar-nav justify-content-evenly flex-grow-1">
     <li class="nav-item">
-        <a class="nav-link nav-txt {% if url_name == 'home' %}active-link{% endif %}" aria-current="page"
-            href="{% url 'home' %}">Home</a>
+        <a class="nav-link nav-headers" aria-current="page" href="{% url 'home' %}">Home</a>
     </li>
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle nav-headers" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Menus
         </a>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Specials</a></li>
-            <li><a class="dropdown-item" href="#">Early Bird</a></li>
-            <li><a class="dropdown-item" href="#">À la carte</a></li>
-            <li><a class="dropdown-item" href="#">Create Menu</a></li>
+        <ul class="dropdown-menu bg-nav-dropdowns">
+            <li><a class="dropdown-item nav-txt" href="#">Specials</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Early Bird</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">À la carte</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Create Menu</a></li>
         </ul>
     </li>
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle nav-headers" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Dish Book
         </a>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">All Dishes</a></li>
-            <li><a class="dropdown-item" href="#">Main Dishes</a></li>
-            <li><a class="dropdown-item" href="#">Starter Dishes</a></li>
-            <li><a class="dropdown-item" href="#">Dessert Dishes</a></li>
-            <li><a class="dropdown-item" href="#">Side Dishes</a></li>
-            <li><a class="dropdown-item" href="#">Create Dish</a></li>
+        <ul class="dropdown-menu bg-nav-dropdowns">
+            <li><a class="dropdown-item nav-txt" href="#">All Dishes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Main Dishes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Starter Dishes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Dessert Dishes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Side Dishes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Create Dish</a></li>
         </ul>
     </li>
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle nav-headers" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Sauce Book
         </a>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">All Sauces</a></li>
-            <li><a class="dropdown-item" href="#">Main Sauces</a></li>
-            <li><a class="dropdown-item" href="#">Starter Sauces</a></li>
-            <li><a class="dropdown-item" href="#">Dessert Sauces</a></li>
-            <li><a class="dropdown-item" href="#">Side Sauces</a></li>
-            </li>
+        <ul class="dropdown-menu bg-nav-dropdowns">
+            <li><a class="dropdown-item nav-txt" href="#">All Sauces</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Main Sauces</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Starter Sauces</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Dessert Sauces</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Side Sauces</a></li>
         </ul>
     </li>
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle nav-headers" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Recipe Book
         </a>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Recipes</a></li>
-            <li><a class="dropdown-item" href="#">Create Recipes</a></li>
+        <ul class="dropdown-menu bg-nav-dropdowns">
+            <li><a class="dropdown-item nav-txt" href="#">Recipes</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Create Recipes</a></li>
         </ul>
     </li>
     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle nav-headers" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Products
         </a>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Products</a></li>
-            <li><a class="dropdown-item" href="#">Add Product</a></li>
+        <ul class="dropdown-menu bg-nav-dropdowns">
+            <li><a class="dropdown-item nav-txt" href="#">Products</a></li>
+            <li><a class="dropdown-item nav-txt" href="#">Add Product</a></li>
         </ul>
     </li>
-    <li class="nav-item dropdown d-none d-md-flex">
-        <a class="nav-link
-                  dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-            Account
+</ul>
+<ul class="navbar-nav justify-content-end">
+    <li class="d-none d-xl-flex pe-4">
+        <form class="d-flex pt-1" role="search">
+            <input class="form-control me-2 nav-search" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-search" type="submit">
+                <i class="fas fa-search fa-lg"></i>
+            </button>
+        </form>
+    </li>
+    <li class="nav-item dropdown d-none d-md-flex me-2">
+        <a class="nav-link nav-headers" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+            <i class="fa-solid fa-user-gear fa-md"></i>
         </a>
-        <ul class="dropdown-menu dropdown-menu-lg-end mt-1 dropdown-color">
+        <ul class="dropdown-menu dropdown-menu-md-end bg-nav-dropdowns">
             <li>
-                <a class="nav-link login" aria-current="page" href="">
-                    Admin Pannel
-                </a>
+                <p class="nav-ac-headers mb-0 pb-0 ps-2"> Account</p>
             </li>
-            <li><a class="nav-link login" href="">Logout</a></li>
-            <li><a class="nav-link login" href="">Register</a></li>
-            <li><a class="nav-link login" href="">Login</a></li>
+            <li>
+                <hr class="nav-line my-0 py-0 pb-1">
+            </li>
+            <li><a class="dropdown-item nav-txt" href="">Logout</a></li>
+            <li><a class="dropdown-item nav-txt" href="">Register</a></li>
+            <li><a class="dropdown-item nav-txt" href="">Login</a></li>
+            <li>
+                <p class="nav-ac-headers mb-0 pb-0 ps-2 pt-2"> Admin</p>
+            </li>
+            <li>
+                <hr class="nav-line my-0 py-0 pb-1">
+            </li>
+            <li><a class="dropdown-item nav-txt" aria-current="page" href="">Admin Pannel</a></li>
         </ul>
     </li>
 </ul>

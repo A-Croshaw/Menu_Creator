@@ -1,0 +1,145 @@
+[
+    {
+        "model": "products.product",
+        "pk": 1,        
+        "fields": {
+            "subcategory":2,
+            "category": 2,
+            "cost": 1.00,
+            "product_name": "steak",
+            "weight": 200,
+            "liquid_vol": 0,
+            "quantity": 0
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 2,        
+        "fields": {
+            "subcategory":8,
+            "category": 7,
+            "cost": 1.00,
+            "product_name": "hake",
+            "weight": 200,
+            "liquid_vol": 0,
+            "quantity": 0
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 3,        
+        "fields": {
+            "subcategory":1,
+            "category": 8,
+            "cost": 1.00,
+            "product_name": "pawns",
+            "weight": 200,
+            "liquid_vol": 0,
+            "quantity": 0
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 4,        
+        "fields": {
+            "subcategory":16,
+            "category": 3,
+            "cost": 1.00,
+            "product_name": "apples",
+            "weight": 200,
+            "liquid_vol": 0,
+            "quantity": 0
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 5,        
+        "fields": {
+            "subcategory":20,
+            "category": 10,
+            "cost": 1.00,
+            "product_name": "carrots",
+            "weight": 200,
+            "liquid_vol": 0,
+            "quantity": 0
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 6,        
+        "fields": {
+            "subcategory":24,
+            "category": 9,
+            "cost": 1.00,
+            "product_name": "basil",
+            "weight": 200,
+            "liquid_vol": 0,
+            "quantity": 0
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 7,        
+        "fields": {
+            "subcategory":27,
+            "category": 9,
+            "cost": 1.00,
+            "product_name": "birds eye chillie",
+            "weight": 200,
+            "liquid_vol": 0,
+            "quantity": 0
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 8,        
+        "fields": {
+            "subcategory":30,
+            "category": 5,
+            "cost": 1.00,
+            "product_name": "rum",
+            "weight": 0,
+            "liquid_vol": 700,
+            "quantity": 0
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 9,        
+        "fields": {
+            "subcategory":34,
+            "category": 1,
+            "cost": 1.00,
+            "product_name": "eggs",
+            "weight": 0,
+            "liquid_vol": 0,
+            "quantity": 1
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 10,        
+        "fields": {
+            "subcategory":44,
+            "category": 4,
+            "cost": 1.00,
+            "product_name": "white chocolate",
+            "weight": 200,
+            "liquid_vol": 0,
+            "quantity": 0
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 11,        
+        "fields": {
+            "subcategory":61,
+            "category": 11,
+            "cost": 1.00,
+            "product_name": "buns",
+            "weight": 0,
+            "liquid_vol": 0,
+            "quantity": 1
+        }
+    }
+]

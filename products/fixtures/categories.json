@@ -1,0 +1,90 @@
+[
+    {
+        "model": "products.category",
+        "pk": 1,
+        "fields": {
+            "category": "dairy",
+            "view_category": "Dairy"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 2,
+        "fields": {
+            "category": "meat",
+            "view_category": "Meat"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 3,
+        "fields": {
+            "category": "fruit",
+            "view_category": "Fruit"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 4,
+        "fields": {
+            "category": "baking",
+            "view_category": "Baking"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 5,
+        "fields": {
+            "category": "beverages",
+            "view_category": "Beverages"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 6,
+        "fields": {
+            "category": "confectionery",
+            "view_category": "Confectionery"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 7,
+        "fields": {
+            "category": "fish",
+            "view_category": "Fish"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 8,
+        "fields": {
+            "category": "shellfish",
+            "view_category": "Shellfish"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 9,
+        "fields": {
+            "category": "herbs-spices",
+            "view_category": "Herbs & Spices"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 10,
+        "fields": {
+            "category": "vegetables",
+            "view_category": "Vegetables"
+        }
+    },
+    {
+        "model": "products.category",
+        "pk": 11,
+        "fields": {
+            "category": "other",
+            "view_category": "Other"
+        }
+    }
+]

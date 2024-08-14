@@ -1,0 +1,164 @@
+[
+    {
+        "pk": 1,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "cold-desserts",
+            "recipecategory": 1,
+            "view_recipesubcategory": "Cold Desserts"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "hot-desserts",
+            "recipecategory": 1,
+            "view_recipesubcategory": "Hot Desserts"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "other-desserts",
+            "recipecategory": 1,
+            "view_recipesubcategory": "Other Desserts"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "cold-starters",
+            "recipecategory": 2,
+            "view_recipesubcategory": "Cold Starters"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "hot-starters",
+            "recipecategory": 2,
+            "view_recipesubcategory": "Hot Starters"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "other-starters",
+            "recipecategory": 2,
+            "view_recipesubcategory": "Other Starters"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "cold-mains",
+            "recipecategory": 3,
+            "view_recipesubcategory": "Cold Mains"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "hot-mains",
+            "recipecategory": 3,
+            "view_recipesubcategory": "Hot Mains"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "other-mains",
+            "recipecategory": 3,
+            "view_recipesubcategory": "Other Mains"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "cold-sides",
+            "recipecategory": 4,
+            "view_recipesubcategory": "Cold Sides"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "hot-sides",
+            "recipecategory": 4,
+            "view_recipesubcategory": "Hot Sides"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "other-sides",
+            "recipecategory": 4,
+            "view_recipesubcategory": "Other Sides"
+        }
+    },
+    {
+        "pk": 13,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "cold-sauces",
+            "recipecategory": 5,
+            "view_recipesubcategory": "Cold Sauces"
+        }
+    },
+    {
+        "pk": 14,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "hot-sauces",
+            "recipecategory": 5,
+            "view_recipesubcategory": "Hot Sauces"
+        }
+    },
+    {
+        "pk": 15,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "other-sauces",
+            "recipecategory": 5,
+            "view_recipesubcategory": "Other Sauces"
+        }
+    },
+    {
+        "pk": 16,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "cold-dessert-sauces",
+            "recipecategory": 6,
+            "view_recipesubcategory": "Cold Dessert Sauces"
+        }
+    },
+    {
+        "pk": 17,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "hot-dessert-sauces",
+            "recipecategory": 6,
+            "view_recipesubcategory": "Hot Dessert Sauces"
+        }
+    },
+    {
+        "pk": 18,
+        "model": "recipes.recipesubcategory",
+        "fields": {
+            "recipesubcategory": "other-dessert-sauces",
+            "recipecategory": 6,
+            "view_recipesubcategory": "Other Dessert Sauces"
+        }
+    }
+]

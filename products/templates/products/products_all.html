@@ -24,11 +24,13 @@
     </div>
     <div class="row justify-content-evenly mb-2">
         <div class="col-4">
+            {% if request.user.is_superuser %}
             <div class="row py-2 justify-content-center">
                 <a class="btn btn-products" href="{% url 'product_add' %}" aria-label="Add Product" rel="opener">
                     Add Product
                 </a>
             </div>
+            {% endif %}
         </div>
         <div class="col-4">
             <div class="row py-2 justify-content-center">
@@ -93,6 +95,7 @@
                         <strong>Volume:</strong> {{ product.liquid_vol }}ml
                         {% endif %}
                     </p>
+                    {% if request.user.is_superuser %}
                     <div class="row justify-content-evenly m-0 p-0">
                         <small class="col text-center pb-0 mb-0">
                             <!--edit button-->
@@ -103,6 +106,7 @@
                             <a class="text-danger" href="{% url 'product_delete' product.id %}" aria-label="Delete " rel="noopener">Delete</a>
                         </small>
                     </div>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}

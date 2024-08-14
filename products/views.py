@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import (
+    login_required, permission_required)
 from django.shortcuts import get_object_or_404, redirect, reverse, render
 from django.contrib import messages
 from django.db.models import Q
@@ -72,11 +74,13 @@ def all_products(request):
     return render(request, 'products/products_all.html', context)
 
 
+@login_required
+@permission_required("products.product_add", raise_exception=True)
 def add_product(request):
     """ Adding products, (admin users only) """
-    #if not request.user.is_superuser:
-       # messages.error(request, 'Admin users can only add products.')
-        #return redirect(reverse('home'))
+    if not request.user.is_superuser:
+        messages.error(request, 'Admin users can only add products.')
+        return redirect(reverse('home'))
 
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -100,11 +104,13 @@ def add_product(request):
     return render(request, template, context)
 
 
+@login_required
+@permission_required("products.product_edit", raise_exception=True)
 def edit_product(request, product_id):
     """ Edit a product """
-    #if not request.user.is_superuser:
-    #    messages.error(request, 'Admin users only can edit products.')
-    #    return redirect(reverse('home'))
+    if not request.user.is_superuser:
+        messages.error(request, 'Admin users only can edit products.')
+        return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
@@ -131,11 +137,13 @@ def edit_product(request, product_id):
     return render(request, template, context)
 
 
+@login_required
+@permission_required("products.product_delete", raise_exception=True)
 def product_delete(request, product_id):
     """ Delete product """
-    #if not request.user.is_superuser:
-    #    messages.error(request, 'Admin users can only delete products.')
-    #    return redirect(reverse('home'))
+    if not request.user.is_superuser:
+        messages.error(request, 'Admin users can only delete products.')
+        return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
     if request.method == "POST":

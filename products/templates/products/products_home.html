@@ -9,9 +9,11 @@
     <div class="row justify-content-evenly my-4">
         <div class="col-3 col-md-2 mx-1">
             <div class="row py-2 justify-content-center">
+                {% if request.user.is_superuser %}
                 <a class="btn btn-products" href="{% url 'product_add' %}" aria-label="Add Product" rel="opener">
                     Add Product
                 </a>
+                {% endif %}
             </div>
         </div>
         <div class="col-3 col-md-2 mx-1">

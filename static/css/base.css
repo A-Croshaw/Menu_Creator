@@ -265,7 +265,7 @@ select {
     border: var(---btn-border-product-home);
     color: var(--white);
     border-radius: 5px;
-    max-width: 200px;
+    padding: 2px 5px;
     height: 40px;
     box-shadow: var(--product-home-shadows);
     font-family: var(--headers);
@@ -297,6 +297,20 @@ option {
 }
 
 /*--- Products Add ---*/
+.product-form {
+    max-width: 450px;
+}
+
+.product-form-txt {
+    font-family: var(--text-fonts);
+    font-size: 18px;
+}
+
+.product-form-heading{
+    font-family: var(--headers);
+    font-size: 26px;
+    font-weight: 700;
+}
 
 /*--- Produsta Edit ---*/
 

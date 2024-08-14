@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Product Delete{% endblock %}
+
+{% block content %}
+<div class="container-fluid pt-md-3 pb-3">
+    <div class="row mt-5 mt-md-2">
+        <h1 class="text-center page-headers"> Confirm deletion of {{ product.name }}</h1>
+    </div>
+    <form action="." method="POST">{% csrf_token %}
+        <div class="row justify-content-center">
+            <div class="card product-card mb-3 p-0">
+                <div class="card-body">
+                    <p class="product-card-text p-0 m-0">
+                        <strong>Product:</strong> {{ product.name|title }}
+                    </p>
+                    <p class="product-card-text p-0 m-0">
+                        <strong>Category:</strong> {{ product.category|title }}
+                    </p>
+                    <p class="product-card-text p-0 m-0">
+                        <strong>Sub Category:</strong> {{ product.subcategory|title }}
+                    </p>
+                    <p class="product-card-text p-0 m-0">
+                        <strong>Cost:</strong> {{ product.cost|title }}
+                    </p>
+                    <p class="product-card-text p-0 m-0">
+                        {% if product.quantity > 0%}
+                        <strong>Quantity:</strong> {{ product.quantity }}
+                        {% endif %}
+                        {% if product.weight > 0%}
+                        <strong>Weight:</strong> {{ product.weight }}g
+                        {% endif %}
+                        {% if product.liquid_vol > 0%}
+                        <strong>Volume:</strong> {{ product.liquid_vol }}ml
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            <div class="row justify-content-evenly">
+                <a class="btn btn-products mt-2" href="{% url 'products' %}" aria-label="Return product management"
+                    rel="opener">Cancel</a>
+                <input class="btn btn-products" type="submit" value="Confirm" />
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

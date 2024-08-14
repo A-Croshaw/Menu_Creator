@@ -52,7 +52,7 @@ class Product(models.Model):
         decimal_places=2,
         null=True,
     )
-    product_name = models.CharField(max_length=254, null=False
+    name = models.CharField(max_length=254, null=False
                                     )
     weight = models.DecimalField(
         max_digits=15,
@@ -75,7 +75,7 @@ class Product(models.Model):
 
 
     class Meta:
-        ordering = ["product_name"]
+        ordering = ["name"]
 
     def __str__(self):
-        return str(self.product_name)
+        return str(self.name)

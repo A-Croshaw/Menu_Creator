@@ -238,7 +238,7 @@
         "model": "products.subcategory",
         "pk": 27,        
         "fields": {
-            "subcategory": "Fresh Spice",
+            "subcategory": "fresh-spice",
             "category": 9,
             "view_subcategory": "Fresh Spice"
         }

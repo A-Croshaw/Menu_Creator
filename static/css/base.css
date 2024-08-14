@@ -10,10 +10,17 @@
     --nav-footer-bg: #770b0b;
     --active-page: #fffb00;
     --nav-hover: #fffb00;
+    --product-home-bg: #a0a0a0;
 
     /*--- Buttons ---*/
     --btn-search-border: 2px solid #fff;
     --btn-search-hover-border: 2px solid #fffb00;
+    --btn-products: #770b0b;
+    ---btn-border-product-home:2px solid #fff;
+    ---btn-border-product-home-hover:2px solid #fffb00;
+
+    /*--- Products ---*/
+    --product-home-shadows:5px -3px 15px 0px #000000e0;
 
     /*--- Nav ---*/
     --bs-offcanvas-width-left: 280px;
@@ -36,12 +43,11 @@ body {
 body {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    background-color: var(--product-home-bg);
 }
 
-/*------------ Buttons ------------*/
+/*------------ Header ------------*/
+/*--- Nav Buttons ---*/
 
 .btn-side-search,
 .btn-search {
@@ -67,11 +73,7 @@ body {
     border: var(--btn-search-hover-border);
     color: var(--nav-hover);
 }
-
-/*------------ Header ------------*/
-
-/*------ Nav ------*/
-
+/*--- Nav ---*/
 .nav-txt:hover,
 .bg-nav-dropdowns,
 .bg-nav {
@@ -204,14 +206,119 @@ footer {
     font-size: 20px;
 }
 
-.footer-txt:hover{
+.footer-txt:hover {
     color: var(--nav-hover);
 }
 
-/*------------ Media Queries ------------*/
+/*------------ Generic ------------*/
+.page-headers {
+    font-family: var(--headers);
+    font-size: 40px;
+}
 
-@media (min-width: 1200px){
-    .content-offset{
-        margin-top: 60px;
+input[name='q']::placeholder {
+    color: #aab7c4;
+}
+
+/*------------ Products -------------*/
+
+/*--- Product Buttons ---*/
+.btn-products {
+    background-color: var(--btn-products);
+    color: var(--white);
+    max-width: 180px;
+    border: var(---btn-border-product-home);
+    box-shadow: var(--product-home-shadows);
+    
+}
+
+.btn-products:hover {
+    background-color: var(--btn-products);
+    color: var(--nav-hover);
+    border: var(---btn-border-product-home-hover);
+}
+
+.product-sub-heading {
+    font-family: var(--headers);
+    font-size: 30px;
+}
+
+/*--- Products Home ---*/
+
+
+.product-home-headers {
+    font-family: var(--headers);
+    font-size: 30px;
+}
+
+/*--- Products all ---*/
+
+.product-search {
+    max-width: 500px;
+}
+
+select {
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    background-color: var(--btn-products);
+    border: var(---btn-border-product-home);
+    color: var(--white);
+    border-radius: 5px;
+    max-width: 200px;
+    height: 40px;
+    box-shadow: var(--product-home-shadows);
+    font-family: var(--headers);
+    font-size: 18px;
+    text-align: center;
+}
+
+.sort-select {
+    max-width: 200px;
+}
+
+select:hover {
+    border: var(---btn-border-product-home-hover);
+    color: var(--nav-hover);
+}
+
+option {   
+    color: var(--white);
+}
+
+.product-card-text {
+    font-family: var(--text-fonts);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.product-card{
+    width: 300px;
+}
+
+/*--- Products Add ---*/
+
+/*--- Produsta Edit ---*/
+
+/*--- Products Delete ---*/
+
+
+/*------------ Media Queries ------------*/
+@media (min-width: 400px) {
+    .page-headers {
+        font-family: var(--headers);
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 768px) {
+    .content-offset {
+        margin-top: 110px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .content-offset {
+        margin-top: 55px;
     }
 }

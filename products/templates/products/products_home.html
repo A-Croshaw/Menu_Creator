@@ -1,0 +1,531 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container-fluid pt-5 pt-md-3">
+    <div class="row mt-3">
+        <h1 class="text-center page-headers"> Product Manager</h1>
+    </div>
+    <div class="row justify-content-evenly my-4">
+        <div class="col-3 col-md-2 mx-1">
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="" aria-label="Add Product" rel="opener">
+                    Add Product
+                </a>
+            </div>
+        </div>
+        <div class="col-3 col-md-2 mx-1">
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}" aria-label="All Product" rel="opener">
+                    All Product
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-evenly">
+        <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
+            <div class="row py-2 justify-content-center">
+                <h2 class="product-home-headers text-center">
+                    Beverages
+                </h2>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?category=beverages"
+                    aria-label="View All Fish" rel="opener">
+                    All Beverages
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=alcohol"
+                    aria-label="View Alcohol" rel="opener">
+                    Alcohol
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=col-12d-drinks"
+                    aria-label="View Col-12d Drinks" rel="opener">
+                    Cold Drinks
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=hot-drinks"
+                    aria-label="View Hot Drinks" rel="opener">
+                    Hot Drinks
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=other-drinks"
+                    aria-label="View Other Drinks" rel="opener">
+                    Other Drinks
+                </a>
+            </div>
+        </div>
+        <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
+            <div class="row py-2 justify-content-center">
+                <h2 class="product-home-headers text-center">
+                    Fruits
+                </h2>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?category=fruit" aria-label="View All Fruits"
+                    rel="opener">
+                    All Fruits
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=fresh-fruit"
+                    aria-label="View Fresh Fruit" rel="opener">
+                    Fresh Fruit
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=frozen-fruit"
+                    aria-label="View Frozen Fruit" rel="opener">
+                    Frozen Fruit
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=canned-fruit"
+                    aria-label="View Canned Fruit" rel="opener">
+                    Canned Fruit
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=other-fruit"
+                    aria-label="View Other Fruit" rel="opener">
+                    Other Fruit
+                </a>
+            </div>
+        </div>
+        <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
+            <div class="row py-2 justify-content-center">
+                <h2 class="product-home-headers text-center">
+                    Vegetables
+                </h2>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?category=vegetables"
+                    aria-label="View All Vegetables" rel="opener">
+                    All Vegetables
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=fresh-vegetables"
+                    aria-label="View Fresh Vegetables" rel="opener">
+                    Fresh Vegetables
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=frozen-vegetables"
+                    aria-label="View Frozen Vegetables" rel="opener">
+                    Frozen Vegetables
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=canned-vegetables"
+                    aria-label="View Canned Vegetables" rel="opener">
+                    Canned Vegetables
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=other-vegetables"
+                    aria-label="View Other Vegetables" rel="opener">
+                    Other Vegetables
+                </a>
+            </div>
+        </div>
+        <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
+            <div class="row py-2 justify-content-center">
+                <h2 class="product-home-headers text-center">
+                    Fish
+                </h2>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?category=fish" aria-label="View All Fish"
+                    rel="opener">
+                    All Fish
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=fresh-fish"
+                    aria-label="View Fresh Fish" rel="opener">
+                    Fresh Fish
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=frozen-fish"
+                    aria-label="View Frozen Fish" rel="opener">
+                    Frozen Fish
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=canned-fish"
+                    aria-label="View Canned Fish" rel="opener">
+                    Canned Fish
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=other-fish"
+                    aria-label="View Other Fish" rel="opener">
+                    Other Fish
+                </a>
+            </div>
+        </div>
+        <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
+            <div class="row py-2 justify-content-center">
+                <h2 class="product-home-headers text-center">
+                    Shellfish
+                </h2>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?category=shellfish"
+                    aria-label="View All Shellfish" rel="opener">
+                    All Shellfish
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=fresh-shellfish"
+                    aria-label="View Fresh Shellfish" rel="opener">
+                    Fresh Shellfish
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=frozen-shellfish"
+                    aria-label="View Frozen Shellfish" rel="opener">
+                    Frozen Shellfish
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=canned-shellfish"
+                    aria-label="View Canned Shellfish" rel="opener">
+                    Canned Shellfish
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=other-shellfish"
+                    aria-label="View Other Shellfish" rel="opener">
+                    Other Shellfish
+                </a>
+            </div>
+        </div>
+        <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
+            <div class="row py-2 justify-content-center">
+                <h2 class="product-home-headers text-center">
+                    Meats
+                </h2>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?category=vegetables"
+                    aria-label="View All Meats" rel="opener">
+                    All Meats
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=chicken"
+                    aria-label="View Chicken" rel="opener">
+                    Chicken
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=beef" aria-label="View Beef"
+                    rel="opener">
+                    Beef
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=turkey" aria-label="View Turkey"
+                    rel="opener">
+                    Turkey
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=pork" aria-label="View Pork"
+                    rel="opener">
+                    Pork
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=lamb" aria-label="View Lamb"
+                    rel="opener">
+                    Lamb
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=venison"
+                    aria-label="View Venison" rel="opener">
+                    Venison
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=other-meat"
+                    aria-label="View Other Meats" rel="opener">
+                    Other Meat
+                </a>
+            </div>
+        </div>
+        <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
+            <div class="row py-2 justify-content-center">
+                <h2 class="product-home-headers text-center">
+                    All Confectionerys
+                </h2>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?category=confectionerys"
+                    aria-label="View All Confectionerys" rel="opener">
+                    Confectionerys
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=rice" aria-label="View Rice"
+                    rel="opener">
+                    Rice
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=pastires"
+                    aria-label="View Pastires" rel="opener">
+                    Pastires
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=pastas" aria-label="View Pastas"
+                    rel="opener">
+                    Pastas
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=oils" aria-label="View Oils"
+                    rel="opener">
+                    Oils
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=nuts" aria-label="View Nuts"
+                    rel="opener">
+                    Nuts
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=cereals"
+                    aria-label="View Cereals" rel="opener">
+                    Cereals
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=canned-items"
+                    aria-label="View Canned Items" rel="opener">
+                    Canned Items
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=other-confectionerys"
+                    aria-label="View Other Confectionerys" rel="opener">
+                    Other Confectionerys
+                </a>
+            </div>
+        </div>
+        <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
+            <div class="row py-2 justify-content-center">
+                <h2 class="product-home-headers text-center">
+                    Baking
+                </h2>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?category=baking" aria-label="View All Baking"
+                    rel="opener">
+                    All Baking
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=chocol-12ates"
+                    aria-label="View Chocol-12ates" rel="opener">
+                    Chocolates
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=decorations"
+                    aria-label="View Decorations" rel="opener">
+                    Decorations
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=extracts"
+                    aria-label="View Extracts" rel="opener">
+                    Extracts
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=flavorings"
+                    aria-label="View flavorings" rel="opener">
+                    Flavourings
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=flours" aria-label="View Flours"
+                    rel="opener">
+                    Flours
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=sugars" aria-label="View Sugars"
+                    rel="opener">
+                    Sugars
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=fondants"
+                    aria-label="View Fondants" rel="opener">
+                    Fondants
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=leaveners"
+                    aria-label="View Leaveners" rel="opener">
+                    Leaveners
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=other-baking"
+                    aria-label="View Other Baking" rel="opener">
+                    Other Baking
+                </a>
+            </div>
+        </div>
+        <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
+            <div class="row py-2 justify-content-center">
+                <h2 class="product-home-headers text-center">
+                    Herbs & Spices
+                </h2>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?category=herbs-spices"
+                    aria-label="View All Shellfish" rel="opener">
+                    All Herbs & Spices
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=fresh-herbs"
+                    aria-label="View Fresh Herbs" rel="opener">
+                    Fresh Herbs
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=dried-herbs"
+                    aria-label="View Dried Herbs" rel="opener">
+                    Dried Herbs
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=other-herbs"
+                    aria-label="View Other Herbs" rel="opener">
+                    Other Herbs
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=fresh-spice"
+                    aria-label="View Fresh Spice" rel="opener">
+                    Fresh Spices
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=dried-spice"
+                    aria-label="View Dried Spice" rel="opener">
+                    Dried Spices
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=other-spice"
+                    aria-label="View Other Spice" rel="opener">
+                    Other Spices
+                </a>
+            </div>
+        </div>
+        <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
+            <div class="row py-2 justify-content-center">
+                <h2 class="product-home-headers text-center">
+                    Dairy
+                </h2>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?category=dairy" aria-label="View All Dairy"
+                    rel="opener">
+                    All Dairy
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=eggs"
+                    aria-label="View Egg Products" rel="opener">
+                    Egg Products
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=butters"
+                    aria-label="View Butters" rel="opener">
+                    Butters
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=cream-cheeses"
+                    aria-label="View Cream Cheeses" rel="opener">
+                    Cream Cheeses
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=creams" aria-label="View Creams"
+                    rel="opener">
+                    Creams
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=hard-cheeses"
+                    aria-label="View Hard Cheeses" rel="opener">
+                    Hard Cheeses
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=soft-cheeses"
+                    aria-label="View Soft Cheeses" rel="opener">
+                    Soft Cheeses
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=ice-creams"
+                    aria-label="View Ice Creams" rel="opener">
+                    Ice Creams
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=Milks" aria-label="View Milks"
+                    rel="opener">
+                    Milks
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=yogurts"
+                    aria-label="View Yogurts" rel="opener">
+                    Yogurts
+                </a>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?subcategory=other-dairy"
+                    aria-label="View Other Dairy" rel="opener">
+                    Other Dairy
+                </a>
+            </div>
+        </div>
+        <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
+            <div class="row py-2 justify-content-center">
+                <h2 class="product-home-headers text-center">
+                    Others
+                </h2>
+            </div>
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products_all' %}?category=other" aria-label="View Other"
+                    rel="opener">
+                    Other
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

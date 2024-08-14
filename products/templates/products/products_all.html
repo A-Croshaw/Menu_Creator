@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Products{% endblock %}
+{% block content %}
+<div class="container-fluid pt-md-3 pb-3">
+    <div class="row mt-3">
+        <h1 class="text-center page-headers"> Products</h1>
+        <h2 class="product-sub-heading text-center">
+            {% for s in sorted_subcategories %}{{ s.view_subcategory }}{% endfor %}
+            {% for c in sorted_categories %}{{ c.view_category }}{% endfor %}
+        </h2>
+    </div>
+    <div class="container d-flex flex-wrap flex-column product-search mt-3">
+        <h2 class="text-center product-sub-heading">
+            Search Products
+        </h2>
+        <form class="d-flex pb-2" role="search" method="GET" action="{% url 'products_all' %}">
+            <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-products" type="submit"><i class="fas fa-search fa-xl"></i></button>
+        </form>
+        <p class="sort-txt text-center pt-1">
+            {{ products|length }} products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+        </p>
+    </div>
+    <div class="row justify-content-evenly mb-2">
+        <div class="col-4">
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="" aria-label="Add Product" rel="opener">
+                    Add Product
+                </a>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row py-2 justify-content-center">
+                <select id="sort-selector" class="rounded-2 sort-select">
+                    <option>Sort by...</option>
+                    <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Reset</option>
+                    <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)
+                    </option>
+                    <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)
+                    </option>
+                    <option value="cost_asc" {% if current_sorting == 'cost_asc' %}selected{% endif %}>Cost (low to
+                        high)
+                    </option>
+                    <option value="cost_desc" {% if current_sorting == 'cost_desc' %}selected{% endif %}>Cost (high to
+                        low)</option>
+                    <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category
+                        (A-Z)</option>
+                    <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>
+                        Category
+                        (Z-A)</option>
+                    <option value="subcategory_asc" {% if current_sorting == 'subcategory_asc' %}selected{% endif %}>Sub
+                        Category (A-Z)</option>
+                    <option value="subcategory_desc" {% if current_sorting == 'subcategory_desc' %}selected{% endif %}>
+                        Sub
+                        Category (Z-A)</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-products" href="{% url 'products' %}" aria-label="All Product" rel="opener">
+                    Product Groups
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div Class="row justify-content-evenly">
+            {% for  product in products %}
+            <div class="card product-card mb-3 p-0">
+                <div class="card-body">
+                    <p class="product-card-text p-0 m-0">
+                        <strong>Product:</strong> {{ product.name|title }}
+                    </p>
+                    <p class="product-card-text p-0 m-0">
+                        <strong>Category:</strong> {{ product.category|title }}
+                    </p>
+                    <p class="product-card-text p-0 m-0">
+                        <strong>Sub Category:</strong> {{ product.subcategory|title }}
+                    </p>
+                    <p class="product-card-text p-0 m-0">
+                        <strong>Cost:</strong> {{ product.cost|title }}
+                    </p>
+                    <p class="product-card-text p-0 m-0">
+                        {% if product.quantity > 0%}
+                        <strong>Quantity:</strong> {{ product.quantity }}
+                        {% endif %}
+                        {% if product.weight > 0%}
+                        <strong>Weight:</strong> {{ product.weight }}g
+                        {% endif %}
+                        {% if product.liquid_vol > 0%}
+                        <strong>Volume:</strong> {{ product.liquid_vol }}ml
+                        {% endif %}
+                    </p>
+                    <div class="row justify-content-evenly m-0 p-0">
+                        <small class="col text-center pb-0 mb-0">
+                            <!--edit button-->
+                            <a href="" aria-label="Edit" rel="noopener">Edit</a>
+                        </small>
+                        <small class="col text-center pb-0 mb-0">
+                            <!--delete button-->
+                            <a class="text-danger" href="" aria-label="Delete " rel="noopener">Delete</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+    $('#sort-selector').change(function () {
+        const selector = $(this);
+        const thisUrl = new URL(window.location);
+        const order = selector.val();
+        if (order != "reset") {
+            const sort = order.split("_")[0];
+            const direction = order.split("_")[1];
+            thisUrl.searchParams.set("sort", sort);
+            thisUrl.searchParams.set("direction", direction);
+            window.location.replace(thisUrl);
+        } else {
+            thisUrl.searchParams.delete("sort");
+            thisUrl.searchParams.delete("direction");
+            window.location.replace(thisUrl);
+        }
+    })
+</script>
+{% endblock %}

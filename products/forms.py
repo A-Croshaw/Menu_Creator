@@ -10,7 +10,7 @@ class ProductForm(forms.ModelForm):
         Form Fields
         """
         model = Product
-        fields = ("product_name",
+        fields = ("name",
                   "category",
                   "subcategory",
                   "cost",
@@ -18,7 +18,7 @@ class ProductForm(forms.ModelForm):
                   "quantity",
                   "liquid_vol" 
                   )
-        labels = {"product_name": "Product Name",
+        labels = {"name": "Product Name",
                   "category": "Category",
                   "subcategory": "Subcategory",
                   "cost": "Cost",

@@ -9,7 +9,7 @@ class ProductAdmin(admin.ModelAdmin):
     fieldsets = []
 
     list_display = (
-        "product_name",
+        "name",
         "category",
         "subcategory",
         "cost",
@@ -18,8 +18,8 @@ class ProductAdmin(admin.ModelAdmin):
         "liquid_vol"
     )
 
-    list_filter = ("category", "subcategory", "product_name",)
-    ordering = ("category", "subcategory", "product_name",)
+    list_filter = ("category", "subcategory", "name",)
+    ordering = ("category", "subcategory", "name",)
 
 
 class CategoryAdmin(admin.ModelAdmin):

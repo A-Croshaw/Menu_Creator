@@ -58,19 +58,28 @@ class Recipe(models.Model):
         on_delete=models.SET_NULL
     )
     cost = models.DecimalField(
-        max_digits=6, decimal_places=2
+        max_digits=10, decimal_places=2, default=0
+    )
+    portions = models.DecimalField(
+        max_digits=10, decimal_places=0, default=0
+    )
+    portion_cost = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0
     )
 
     def update_cost(self):
         """
         Updates cost when a new ingredient is added,
         """
-        self.cost = self.ingredientline.aggregate(
+        self.cost = self.ingredients.aggregate(
             Sum(
                 'ingredientline_total'
             )
         )['ingredientline_total__sum'] or 0
+
+        self.portion_cost = self.cost / self.portions
         self.save()
+
 
     class Meta:
         ordering = ["recipeName"]
@@ -97,7 +106,7 @@ class Ingredients(models.Model):
     )
     quantity = models.DecimalField(
         max_digits=10,
-        decimal_places=2
+        decimal_places=0
     )
     ingredientline_total = models.DecimalField(
         max_digits=6,
@@ -113,13 +122,13 @@ class Ingredients(models.Model):
         and update the cost.
         """
         if self.ingredient.weight > 0:
-            self.ingredientline_total =  Decimal(
+            self.ingredientline_total =  (
                 self.ingredient.cost / self.ingredient.weight) * self.quantity
         elif self.ingredient.quantity > 0:
-            self.ingredientline_total =  Decimal(
+            self.ingredientline_total =  (
                 self.ingredient.cost / self.ingredient.quantity) * self.quantity
         else:
-            self.ingredientline_total =  Decimal(
+            self.ingredientline_total =  (
                 self.ingredient.cost / self.ingredient.liquid_vol) * self.quantity
         super().save(*args, **kwargs)
 
@@ -130,11 +139,11 @@ class Ingredients(models.Model):
 class Method(models.Model):
     """A Model To Create Steps For The Recipe"""
 
-    Recipe = models.ForeignKey(
+    recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE
     )
-    Steps = models.TextField()
+    steps = models.TextField(null=True)
 
     def __str__(self):
-        return str(self.Steps)
+        return str(self.steps)

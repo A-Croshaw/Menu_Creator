@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Add Recipe{% endblock %}
+{% block content %}
+<div class="container-fluid pt-5 pt-md-2 pb-3">
+    <div class="row">
+        <h1 class="text-center page-headers">Add Recipe</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="add-form">
+            <form action="." method="POST" enctype="multipart/form-data" class="mx-3 my-2">
+                {% csrf_token %}
+                <div class="col">
+                    {% for field in form %}
+                    <div class="row text-center pb-1">
+                        {{field.label_tag}}
+                    </div>
+                    <div class="row pb-2">
+                        {{field}}
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="row justify-content-evenly pt-2">
+                    <a class="btn btn-all mt-2" href="{% url 'recipes' %}" aria-label="Return to recipe management"
+                        rel="opener">Cancel</a>
+                    <button type="submit" class="btn btn-all mt-2">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

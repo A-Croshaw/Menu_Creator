@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Recipe Delete{% endblock %}
+
+{% block content %}
+<div class="container-fluid pt-md-3 pb-3">
+    <div class="row mt-5 mt-md-2">
+        <h1 class="text-center page-headers">Deleting Conformation</h1>
+    </div>
+    <form action="." method="POST">{% csrf_token %}
+        <div class="row justify-content-center">
+            <p class="view-txt">Are you sure you want to delete "{{object.recipeName}}"?</p>
+            <div class=" mt-5">
+                <input type="submit" value="Confirm" class="btn btn-all">
+                <a href="{% url 'recipes' %}" class="btn btn-all w-25">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock%}

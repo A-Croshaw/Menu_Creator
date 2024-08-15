@@ -56,19 +56,19 @@ class Product(models.Model):
                                     )
     weight = models.DecimalField(
         max_digits=15,
-        decimal_places=2,
+        decimal_places=0,
         null=True,
         default=0
     )
     liquid_vol = models.DecimalField(
         max_digits=15,
-        decimal_places=2,
+        decimal_places=0,
         null=True,
         default=0
     )
     quantity = models.DecimalField(
         max_digits=15,
-        decimal_places=2,
+        decimal_places=0,
         null=True,
         default=0
     )

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Products{% endblock %}
+{% block title %}All Products{% endblock %}
 {% block content %}
 <div class="container-fluid pt-md-3 pb-3">
     <div class="row mt-3">
@@ -10,13 +10,13 @@
             {% for c in sorted_categories %}{{ c.view_category }}{% endfor %}
         </h2>
     </div>
-    <div class="container d-flex flex-wrap flex-column product-search mt-3">
+    <div class="container d-flex flex-wrap flex-column page-search mt-3">
         <h2 class="text-center product-sub-heading">
             Search Products
         </h2>
         <form class="d-flex pb-2" role="search" method="GET" action="{% url 'products_all' %}">
             <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-products" type="submit"><i class="fas fa-search fa-xl"></i></button>
+            <button class="btn btn-all" type="submit"><i class="fas fa-search fa-xl"></i></button>
         </form>
         <p class="sort-txt text-center pt-1">
             {{ products|length }} products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
@@ -26,7 +26,7 @@
         <div class="col-4">
             {% if request.user.is_superuser %}
             <div class="row py-2 justify-content-center">
-                <a class="btn btn-products" href="{% url 'product_add' %}" aria-label="Add Product" rel="opener">
+                <a class="btn btn-all" href="{% url 'product_add' %}" aria-label="Add Product" rel="opener">
                     Add Product
                 </a>
             </div>
@@ -37,9 +37,9 @@
                 <select id="sort-selector" class="rounded-2 sort-select">
                     <option>Sort by...</option>
                     <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Reset</option>
-                    <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)
+                    <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Product (A-Z)
                     </option>
-                    <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)
+                    <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Product (Z-A)
                     </option>
                     <option value="cost_asc" {% if current_sorting == 'cost_asc' %}selected{% endif %}>Cost (low to
                         high)
@@ -61,7 +61,7 @@
         </div>
         <div class="col-4">
             <div class="row py-2 justify-content-center">
-                <a class="btn btn-products" href="{% url 'products' %}" aria-label="All Product" rel="opener">
+                <a class="btn btn-all" href="{% url 'products' %}" aria-label="All Product" rel="opener">
                     Product Groups
                 </a>
             </div>
@@ -69,7 +69,7 @@
     </div>
     <div class="row justify-content-center">
         <div Class="row justify-content-evenly">
-            {% for  product in products %}
+            {% for product in products %}
             <div class="card product-card mb-3 p-0">
                 <div class="card-body">
                     <p class="product-card-text p-0 m-0">
@@ -113,25 +113,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
-{% block postloadjs %}
-{{ block.super }}
-<script type="text/javascript">
-    $('#sort-selector').change(function () {
-        const selector = $(this);
-        const thisUrl = new URL(window.location);
-        const order = selector.val();
-        if (order != "reset") {
-            const sort = order.split("_")[0];
-            const direction = order.split("_")[1];
-            thisUrl.searchParams.set("sort", sort);
-            thisUrl.searchParams.set("direction", direction);
-            window.location.replace(thisUrl);
-        } else {
-            thisUrl.searchParams.delete("sort");
-            thisUrl.searchParams.delete("direction");
-            window.location.replace(thisUrl);
-        }
-    })
-</script>
 {% endblock %}

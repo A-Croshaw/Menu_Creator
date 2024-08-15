@@ -1,13 +1,4 @@
-document.getElementById("price-up").addEventListener("click", ordered);
-document.getElementById("price-down").addEventListener("click", ordered);
-document.getElementById("name-up").addEventListener("click", ordered);
-document.getElementById("name-down").addEventListener("click", ordered);
-document.getElementById("subcategory-up").addEventListener("click", ordered);
-document.getElementById("subcategory-down").addEventListener("click", ordered);
-document.getElementById("category-up").addEventListener("click", ordered);
-document.getElementById("sort-selector").addEventListener("click", ordered);
-
-function ordered() {
+$('#sort-selector').change(function () {
     const selector = $(this);
     const thisUrl = new URL(window.location);
     const order = selector.val();
@@ -22,4 +13,4 @@ function ordered() {
         thisUrl.searchParams.delete("direction");
         window.location.replace(thisUrl);
     }
-};
+})

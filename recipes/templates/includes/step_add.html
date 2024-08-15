@@ -1,0 +1,16 @@
+{% load static %}
+<form method="POST" hx-target="this" hx-swap="outerHTML" hx-post="." id="step-form">
+    {% csrf_token %}
+    {{ form }}
+    <div class="btn-edit-view pb-2">
+        {% if step %}
+        <button type="submit" hx-post="{% url 'update_step' step.id %}" class="btn btn-all mt-2">
+            Submit
+        </button>
+        {% else %}
+        <button type="submit" id="step-form" class="btn btn-all mt-2">
+            Add
+        </button>
+        {% endif %}
+    </div>
+</form>

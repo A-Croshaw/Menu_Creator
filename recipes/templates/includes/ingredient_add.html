@@ -1,0 +1,17 @@
+{% load static %}
+<form method="POST" hx-target="this" hx-swap="outerHTML" hx-post="." id="ingredient-form">
+    {% csrf_token %}
+    {{ form }}
+    <div class="row justify-content-center pb-2">
+        {% if ingredient %}
+        <button type="submit" hx-post="{% url 'update_ingredient' ingredient.id %}"
+            class="btn btn-all mt-2">
+            Submit
+        </button>
+        {% else %}
+        <button type="submit" id="ingredient-form" class="btn btn-all mt-2">
+            Add
+        </button>
+        {% endif %}
+    </div>
+</form>

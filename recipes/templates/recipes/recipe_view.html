@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Recipe View{% endblock %}
+{% block content %}
+<div class="container-fluid pt-md-3 pb-3">
+    <div class="row mt-3">
+        <h1 class="text-center page-headers">{{recipe.recipeName|title}}</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="p-3 col-5">
+            <h2 class="sub-headers">Details</h2>
+            <p>Recipe for a {{recipe.recipecategory|title}}</p>
+            <p>Recipe for a {{recipe.recipesubcategory|title}}</p>
+            <p>Description {{recipe.description}}</p>
+            <p>Cost {{recipe.cost}}</p>
+            <p>portion Cost {{recipe.portion_cost}}</p>
+            <p>portions {{recipe.portions}}</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="p-3 col-5">
+            <h2 class="">Ingredients</h2>
+            {% for ingredient in ingredient %}
+            {% include "includes/ingredient_details_view.html" %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="p-3 col-5">
+            <h2 >Method</h2>
+            {% for step in step %}
+            {% include "includes/step_details_view.html" %}
+            {% endfor %}
+        </div>
+    </div>
+    <div>
+        <a href="{% url 'recipe_edit' pk=recipe.id %}" class="btn btn-all"
+            aria-label="Click to edit step ">
+            edit
+        </a>
+        <div>
+            <a href="{% url 'recipe_delete' recipe.id %}" class="btn btn-all mt-2" aria-label="Click to return">
+                delete
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'recipes' %}" class="btn btn-all mt-2" aria-label="Click to return">
+                Return
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -10,17 +10,20 @@
     --nav-footer-bg: #770b0b;
     --active-page: #fffb00;
     --nav-hover: #fffb00;
-    --product-home-bg: #a0a0a0;
+    --bg-color: #a0a0a0;
+    --btn-all: #770b0b;
 
     /*--- Buttons ---*/
     --btn-search-border: 2px solid #fff;
     --btn-search-hover-border: 2px solid #fffb00;
-    --btn-products: #770b0b;
-    --btn-border-product-home:2px solid #fff;
-    --btn-border-product-home-hover:2px solid #fffb00;
+    --btn-border:2px solid #fff;
+    --btn-border-hover:2px solid #fffb00;
 
-    /*--- Products ---*/
-    --product-home-shadows:5px -3px 15px 0px #000000e0;
+    /*--- Shadows ---*/
+    --bt-shadows:5px -3px 15px 0px #000000e0;
+
+    /*--- borders ---*/
+    --form-border: 3px solid #313131;
 
     /*--- Nav ---*/
     --bs-offcanvas-width-left: 280px;
@@ -43,12 +46,39 @@ body {
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--product-home-bg);
+    background-color: var(--bg-color);
 }
 
-/*------------ Header ------------*/
-/*--- Nav Buttons ---*/
+/*------------ Select Dropdown ------------*/
+select {
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    background-color: var(--btn-all);
+    border: var(--btn-border);
+    color: var(--white);
+    border-radius: 5px;
+    padding: 2px 5px;
+    height: 40px;
+    box-shadow: var(--bt-shadows);
+    font-family: var(--headers);
+    font-size: 18px;
+    text-align: center;
+}
 
+.sort-select {
+    max-width: 200px;
+}
+
+select:hover {
+    border: var(--btn-border-hover);
+    color: var(--nav-hover);
+}
+
+option {   
+    color: var(--white);
+}
+/*------------ Buttons ------------*/
 .btn-side-search,
 .btn-search {
     border: var(--btn-search-border);
@@ -73,6 +103,23 @@ body {
     border: var(--btn-search-hover-border);
     color: var(--nav-hover);
 }
+
+.btn-all {
+    background-color: var(--btn-all);
+    color: var(--white);
+    max-width: 180px;
+    border: var(--btn-border);
+    box-shadow: var(--bt-shadows);
+    
+}
+
+.btn-all:hover {
+    background-color: var(--btn-all);
+    color: var(--nav-hover);
+    border: var(--btn-border-hover);
+}
+
+/*------------ Header ------------*/
 /*--- Nav ---*/
 .nav-txt:hover,
 .bg-nav-dropdowns,
@@ -220,70 +267,39 @@ input[name='q']::placeholder {
     color: #aab7c4;
 }
 
-/*------------ Products -------------*/
+.page-search {
+    max-width: 500px;
+}
 
-/*--- Product Buttons ---*/
-.btn-products {
-    background-color: var(--btn-products);
-    color: var(--white);
-    max-width: 180px;
-    border: var(--btn-border-product-home);
-    box-shadow: var(--product-home-shadows);
+.sub-heading{
+    font-family: var(--headers);
+    font-size: 30px;
+}
+
+/*------------ Forms --------------*/
+.add-form{
+    width: 460px;
+    border: var(--form-border);
+    font-family: var(--headers);
+    font-size: 22px;
+    font-weight: 600;
+    margin:10px
+}
+.form-border{
     
+    
+    padding: 10px;
 }
-
-.btn-products:hover {
-    background-color: var(--btn-products);
-    color: var(--nav-hover);
-    border: var(--btn-border-product-home-hover);
-}
+/*------------ Products -------------*/
 
 .product-sub-heading {
     font-family: var(--headers);
     font-size: 30px;
 }
 
-/*--- Products Home ---*/
-
-
 .product-home-headers {
     font-family: var(--headers);
     font-size: 30px;
-}
-
-/*--- Products all ---*/
-
-.product-search {
-    max-width: 500px;
-}
-
-select {
-    appearance: none;
-    outline: none;
-    cursor: pointer;
-    background-color: var(--btn-products);
-    border: var(--btn-border-product-home);
-    color: var(--white);
-    border-radius: 5px;
-    padding: 2px 5px;
-    height: 40px;
-    box-shadow: var(--product-home-shadows);
-    font-family: var(--headers);
-    font-size: 18px;
-    text-align: center;
-}
-
-.sort-select {
-    max-width: 200px;
-}
-
-select:hover {
-    border: var(--btn-border-product-home-hover);
-    color: var(--nav-hover);
-}
-
-option {   
-    color: var(--white);
 }
 
 .product-card-text {
@@ -292,11 +308,10 @@ option {
     font-weight: 400;
 }
 
-.product-card{
+.product-card {
     width: 300px;
 }
 
-/*--- Products Add ---*/
 .product-form {
     max-width: 450px;
 }
@@ -306,16 +321,11 @@ option {
     font-size: 18px;
 }
 
-.product-form-heading{
+.product-form-heading {
     font-family: var(--headers);
     font-size: 26px;
     font-weight: 700;
 }
-
-/*--- Produsta Edit ---*/
-
-/*--- Products Delete ---*/
-
 
 /*------------ Media Queries ------------*/
 @media (min-width: 400px) {

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Ingredients{% endblock %}
+{% block content %}
+<div class="container-fluid pt-md-3 pb-3">
+    <div class="row mt-3">
+        <h1 class="text-center page-headers">{{recipe.recipeName|title}}</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="p-3 col-5">
+            <h2 class="">Ingredients</h2>
+            {% for ingredient in ingredient %}
+            {% include "includes/ingredient_details.html" %}
+            {% endfor %}
+            <div id="addingredientsform"></div>
+            <div class="btn-edit-view">
+                <button type="button" hx-get="{% url 'ingredient_add' %}" hx-target="#addingredientsform"
+                    hx-swap="beforeend" class="btn btn-all" aria-label="Click to edit ingredients ">
+                    Add
+                </button>
+            </div>
+            <div>
+                <a href="{% url 'method' pk=recipe.id%}" class="btn btn-all"
+                    aria-label="Click to edit ingredients ">
+                    next
+                </a>
+                <div>
+                    <a href="{% url 'recipe_view' recipe.id %}" class="btn btn-return mt-2" aria-label="Click to return">
+                        Return
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

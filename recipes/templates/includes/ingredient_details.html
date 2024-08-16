@@ -1,24 +1,26 @@
 {% load static %}
 <div hx-target="this">
-    <div class="row">
-            <div class="col-8">
-                <p class="">- {{ ingredient.ingredient }}</p>
+    <div class="row p-0 m-0">
+        <div class="col-5">
+            <p class="p-0 m-0">- {{ ingredient.ingredient|title }}</p>
+        </div>
+        <div class="col-3 col-lg-2">
+            <p class="p-0 m-0 text-end">{{ ingredient.quantity }}{{ ingredient.unit }}</p>
+        </div>
+        <div class="col-4 col-lg-2">
+            <p class="p-0 m-0 text-end">{{ ingredient.ingredientline_total }}</p>
+        </div>
+        <div class="col-12 col-lg-3">
+            <div class="row justify-content-end p-0 m-0">
+                <button hx-get="{% url 'update_ingredient' ingredient.id %}" hx-ta="outerHTML"
+                    class="btn text-primary btn-smalls">
+                    Edit
+                </button>
+                <button hx-post="{% url 'delete_ingredient' ingredient.id %}" hx-swap="outerHTML swap:0s"
+                    class="btn text-danger btn-smalls">
+                    Delete
+                </button>
             </div>
-            <div class="col-2">
-                <p class="">{{ ingredient.quantity }}</p>
-            </div>
-            <div class="col-2">
-                <p class="">{{ ingredient.ingredientline_total }}</p>
-            </div>
-        <div class="row justify-content-center">
-            <button hx-get="{% url 'update_ingredient' ingredient.id %}" hx-ta="outerHTML"
-                class="btn btn-all">
-                edit
-            </button>
-            <button hx-post="{% url 'delete_ingredient' ingredient.id %}" hx-swap="outerHTML swap:0s"
-                class="btn btn-all">
-                delete
-            </button>
         </div>
     </div>
 </div>

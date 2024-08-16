@@ -13,8 +13,14 @@ def recipes_home(request):
     """
     A view to render recipe manager
     """
+    recipesubcategories = RecipeSubcategory.objects.all()
+    recipecategories = RecipeCategory.objects.all()
+    context={
+        'recipesubcategories':recipesubcategories,
+        'recipecategories':recipecategories,
+    }
     template = 'recipes/recipes_home.html'
-    return render(request, template)
+    return render(request, template, context)
 
 
 def all_recipes(request):
@@ -33,9 +39,9 @@ def all_recipes(request):
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
-            if sortkey == 'recipename':
-                sortkey = 'lower_recipename'
-                recipes = recipes.annotate(lower_name=Lower('recipename'))
+            if sortkey == 'recipeName':
+                sortkey = 'lower_recipeName'
+                recipes = recipes.annotate(lower_recipeName=Lower('recipeName'))
             if sortkey == 'recipecategory':
                 sortkey = 'recipecategory__recipecategory'
             if sortkey == 'recipesubcategory':
@@ -66,7 +72,7 @@ def all_recipes(request):
                 messages.error(request, "No recipes with that criteria")
                 return redirect(reverse('recipes_all'))
 
-            queries = Q(recipename__icontains=query)
+            queries = Q(recipeName__icontains=query)
             recipes = recipes.filter(queries)
 
     current_sorted = f'{sort}_{direction}'
@@ -78,7 +84,6 @@ def all_recipes(request):
         'sorted_recipesubcategories': recipesubcategories,
         'current_sorted': current_sorted
     }
-
     return render(request, template, context)
 
 
@@ -117,7 +122,6 @@ def add_recipe(request):
 
 def view_recipe(request, pk):
     """View full Recipie"""
-
     recipe = Recipe.objects.get(id=pk)
     step = Method.objects.filter(recipe=recipe)
     ingredient = Ingredients.objects.filter(recipe=recipe)
@@ -125,11 +129,9 @@ def view_recipe(request, pk):
     template = "recipes/recipe_view.html"
     context = {
         "recipe": recipe,
-        "step":step,
-        "ingredient":ingredient
-
+        "step": step,
+        "ingredient": ingredient
     }
-
     return render(request, template, context,)
 
 
@@ -137,7 +139,6 @@ def view_recipe(request, pk):
 @permission_required("recipes.recipe_edit", raise_exception=True)
 def edit_recipe(request, pk):
     """Updates Recipe Fields"""
-
     recipe = Recipe.objects.get(id=pk)
     form = RecipeForm(request.POST or None, instance=recipe)
     step = Method.objects.filter(recipe=recipe)
@@ -156,7 +157,6 @@ def edit_recipe(request, pk):
         "ingredient": ingredient,
         "step": step,
     }
-
     return render(request, template, context)
 
 
@@ -187,8 +187,8 @@ def recipe_delete(request, pk):
 @permission_required("recipes.ingredients", raise_exception=True)
 def ingredients(request, pk):
     """Creates Ingredient Fields And Add More Enterys"""
-
     recipe = Recipe.objects.get(id=pk)
+    step = Method.objects.filter(recipe=recipe)
     ingredient = Ingredients.objects.filter(recipe=recipe)
     form = IngredientsForm(request.POST or None)
 
@@ -204,15 +204,15 @@ def ingredients(request, pk):
                           "includes/ingredient_add.html",
                           context={
                               "form": form
-                              })
+                          })
 
-    template ="recipes/ingredients.html"
+    template = "recipes/ingredients.html"
     context = {
         "form": form,
         "recipe": recipe,
+        "step": step,
         "ingredient": ingredient,
     }
-
     return render(request, template, context)
 
 
@@ -220,7 +220,6 @@ def ingredients(request, pk):
 @permission_required("recipes.add_ingredients", raise_exception=True)
 def add_ingredient(request):
     """Renders The Form Add Extra Ingredients"""
-
     form = IngredientsForm()
     template = "includes/ingredient_add.html"
     context = {
@@ -231,12 +230,11 @@ def add_ingredient(request):
 
 def ingredient_details(request, pk):
     """Displays Ingredient Fields After Being Added"""
-
     ingredient = get_object_or_404(Ingredients, id=pk)
     template = "includes/ingredient_details.html"
     context = {
         "ingredient": ingredient
-        }
+    }
     return render(request, template, context)
 
 
@@ -244,12 +242,11 @@ def ingredient_details(request, pk):
 @permission_required("recipes.update_ingredient", raise_exception=True)
 def update_ingredient(request, pk):
     """Updates Ingredient Fields"""
-
     ingredient = Ingredients.objects.get(id=pk)
     form = IngredientsForm(
         request.POST or None,
         instance=ingredient
-        )
+    )
 
     if request.method == "POST":
         if form.is_valid():
@@ -262,7 +259,6 @@ def update_ingredient(request, pk):
         "form": form,
         "ingredient": ingredient
     }
-
     return render(request, template, context)
 
 
@@ -270,7 +266,6 @@ def update_ingredient(request, pk):
 @permission_required("recipes.delete_ingredient", raise_exception=True)
 def delete_ingredient(request, pk):
     """Deletes Ingredient Fields"""
-
     ingredient = get_object_or_404(Ingredients, id=pk)
 
     if request.method == "POST":
@@ -290,9 +285,9 @@ def delete_ingredient(request, pk):
 @permission_required("recipes.ingredients", raise_exception=True)
 def method(request, pk):
     """Creates Step Fields And Add More Enterys"""
-
     recipe = Recipe.objects.get(id=pk)
     step = Method.objects.filter(recipe=recipe)
+    ingredient = Ingredients.objects.filter(recipe=recipe)
     form = MethodForm(request.POST or None)
 
     if request.method == "POST":
@@ -307,15 +302,15 @@ def method(request, pk):
                           "includes/step_add.html",
                           context={
                               "form": form
-                              })
+                          })
 
-    template ="recipes/method.html"
+    template = "recipes/method.html"
     context = {
         "form": form,
         "recipe": recipe,
+        'ingredient':ingredient,
         "step": step
     }
-
     return render(request, template, context)
 
 
@@ -323,7 +318,6 @@ def method(request, pk):
 @permission_required("recipes.add_step", raise_exception=True)
 def add_step(request):
     """Renders The Form Add Extra Step"""
-
     form = MethodForm()
     template = "includes/step_add.html"
     context = {
@@ -336,7 +330,6 @@ def add_step(request):
 @permission_required("recipes.update_step", raise_exception=True)
 def update_step(request, pk):
     """Updates Step Fields"""
-
     step = Method.objects.get(id=pk)
     form = MethodForm(request.POST or None, instance=step)
 
@@ -351,7 +344,6 @@ def update_step(request, pk):
         "form": form,
         "step": step
     }
-
     return render(request, template, context)
 
 
@@ -359,7 +351,6 @@ def update_step(request, pk):
 @permission_required("recipes.step_details", raise_exception=True)
 def step_details(request, pk):
     """Displays Step Fields for updating"""
-
     step = get_object_or_404(Method, id=pk)
     template = "includes/step_details.html"
     context = {
@@ -372,7 +363,6 @@ def step_details(request, pk):
 @permission_required("recipes.delete_step", raise_exception=True)
 def delete_step(request, pk):
     """Deletes Step Fields"""
-
     step = get_object_or_404(Method, id=pk)
 
     if request.method == "POST":
@@ -385,4 +375,3 @@ def delete_step(request, pk):
             "POST",
         ]
     )
-

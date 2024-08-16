@@ -1,17 +1,29 @@
 {% load static %}
-<form method="POST" hx-target="this" hx-swap="outerHTML" hx-post="." id="ingredient-form">
+<form method="POST" hx-target="this" hx-swap="outerHTML" hx-post="." id="ingredient-form"
+    class="add-ingredientd-form rounded-2 p-4">
     {% csrf_token %}
-    {{ form }}
+    <div class="col">
+        {% for field in form %}
+        <div class="row justify-content-center text-center pb-2">
+            {{field.label_tag}}
+        </div>
+        <div class="row justify-content-center pb-2 ">
+            {{field}}
+        </div>
+        {% endfor %}
+    </div>
     <div class="row justify-content-center pb-2">
         {% if ingredient %}
-        <button type="submit" hx-post="{% url 'update_ingredient' ingredient.id %}"
-            class="btn btn-all mt-2">
+        <button type="submit" hx-post="{% url 'update_ingredient' ingredient.id %}" class="btn btn-all mt-2">
             Submit
         </button>
         {% else %}
         <button type="submit" id="ingredient-form" class="btn btn-all mt-2">
             Add
         </button>
+        <a href="." class="btn btn-all mt-2" aria-label="Click to edit ingredients ">
+            Cancel
+        </a>
         {% endif %}
     </div>
 </form>

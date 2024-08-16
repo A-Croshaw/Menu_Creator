@@ -1,47 +1,49 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Recipe View{% endblock %}
+{% block title %}Recipe Edit{% endblock %}
 {% block content %}
-<div class="container-fluid pt-md-3 pb-3">
-    <div class="row mt-3">
+<div class="container-fluid pt-md-3">
+    <div class="row mt-5 mt-md-2">
         <h1 class="text-center page-headers">{{recipe.recipeName|title}}</h1>
     </div>
-    <div class="row justify-content-center">
-        <div class="add-form">
-            <form action="." method="POST" enctype="multipart/form-data" class="mx-3 my-2">
-                {% csrf_token %}
-                <div class="col">
-                    {% for field in form %}
-                    <div class="row text-center pb-1">
-                        {{field.label_tag}}
+    <div class="row gap-1 p-2">
+        <div class="details add-box col py-3">
+            <div class="container-fluid">
+                <form action="." method="POST" enctype="multipart/form-data" class="recipe-form mx-3 my-2 p-3">
+                    {% csrf_token %}
+                    <div class="col">
+                        {% for field in form %}
+                        <div class="row justify-content-center text-center pb-2">
+                            {{field.label_tag}}
+                        </div>
+                        <div class="row justify-content-center pb-2 ">
+                            {{field}}
+                        </div>
+                        {% endfor %}
                     </div>
-                    <div class="row pb-2">
-                        {{field}}
+                    <div class="row justify-content-evenly pt-2">
+                        <a class="btn btn-all mt-2" href="{% url 'recipe_view' pk=recipe.id %}" aria-label="Return to recipe management"
+                            rel="opener">Cancel</a>
+                        <button type="submit" class="btn btn-all mt-2">Next</button>
                     </div>
-                    {% endfor %}
-                </div>
-                <div class="row justify-content-evenly pt-2">
-                    <a class="btn btn-all mt-2" href="{% url 'recipes' %}" aria-label="Return to recipe management"
-                        rel="opener">Cancel</a>
-                    <button type="submit" class="btn btn-all mt-2">next</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="p-3 col-5">
-            <h2 class="">Ingredients</h2>
-            {% for ingredient in ingredient %}
-            {% include "includes/ingredient_details_view.html" %}
-            {% endfor %}
+        <div class="details col p-0 py-3">
+            <div class="container-fluid">
+                <h2 class="sub-headers text-center">Ingredients</h2>
+                <hr>
+                {% include "includes/ingredient_details_view.html" %}
+            </div>
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="p-3 col-5">
-            <h2 >Method</h2>
-            {% for step in step %}
-            {% include "includes/step_details_view.html" %}
-            {% endfor %}
+        <div class="method col py-3">
+            <div class="container-fluid">
+                <h2 class="sub-headers text-center">Method</h2>
+                <hr>
+                {% for step in step %}
+                <p class="p-0 m-0">- {{step}}</p>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>

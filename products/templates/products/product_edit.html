@@ -1,89 +1,35 @@
 {% extends "base.html" %}
-{% block title %}Edit Product{% endblock %}
+{% block title %}editing Product{% endblock %}
 {% block content %}
-<div class="container-fluid pt-md-3 pb-3">
+<div class="container-fluid pt-md-3">
     <div class="row mt-5 mt-md-2">
-        <h1 class="text-center page-headers"> Editing Product {{ product.name }}</h1>
+        <h1 class="text-center page-headers">Editing Product {{ product.name}}</h1>
     </div>
     <div class="row justify-content-center mt-4">
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="row justify-content-center">
-                <div class="col-10 col-md-12 col-xl-10">
-                    <h2 class="product-form-heading mb-3">When Editing A Product</h2>
-                    <p class="product-form-txt"><strong>Weight, Quantity and Liquid Volume</strong> only add which is
-                        required and leave others set to 0 </p>
-                    <p class="product-form-txt">Set <strong>Weight</strong> in <strong>Grams</strong></p>
-                    <p class="product-form-txt">Set <strong>Liquid Volume</strong> in <strong>millilitres</strong></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 ">
-            <div class="row justify-content-center">
-                <div class="col-10 col-md-12 col-xl-10">
-                    <form method="POST" action="{% url 'product_edit' product.id %}" enctype="multipart/form-data" class="p-2">
-                        {% csrf_token %}
-                        <div class="row py-2">
-                            <div class="col">
-                                <p class="product-form-txt">Product:</p>
-                            </div>
-                            <div class="col">
-                                {{ form.name }}
-                            </div>
+        <p class="text-center"><strong>Weight, Quantity and Liquid Volume</strong> only add which is
+            required and leave others set to 0 </p>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="add-box col py-3">
+            <div class="container-fluid">
+                <form action="." method="POST" enctype="multipart/form-data" class="add-form mx-3 my-2 p-3">
+                    {% csrf_token %}
+                    <div class="col">
+                        {% for field in form %}
+                        <div class="row justify-content-center text-center pb-2">
+                            {{field.label_tag}}
                         </div>
-                        <div class="row py-2">
-                            <div class="col">
-                                <p class="product-form-txt">Category:</p>
-                            </div>
-                            <div class="col">
-                                {{ form.category }}
-                            </div>
+                        <div class="row justify-content-center pb-2 ">
+                            {{field}}
                         </div>
-                        <div class="row py-2">
-                            <div class="col">
-                                <p class="product-form-txt">Sub Category:</p>
-                            </div>
-                            <div class="col">
-                                {{ form.subcategory }}
-                            </div>
-                        </div>
-                        <div class="row py-2">
-                            <div class="col">
-                                <p class="product-form-txt">Cost:</p>
-                            </div>
-                            <div class="col">
-                                {{ form.cost }}
-                            </div>
-                        </div>
-                        <div class="row py-2">
-                            <div class="col">
-                                <p class="product-form-txt">Weight:</p>
-                            </div>
-                            <div class="col">
-                                {{ form.weight }}
-                            </div>
-                        </div>
-                        <div class="row py-2">
-                            <div class="col">
-                                <p class="product-form-txt">Quantity:</p>
-                            </div>
-                            <div class="col">
-                                {{ form.quantity }}
-                            </div>
-                        </div>
-                        <div class="row py-2">
-                            <div class="col">
-                                <p class="product-form-txt">Liquid Volume:</p>
-                            </div>
-                            <div class="col">
-                                {{ form.liquid_vol }}
-                            </div>
-                        </div>
-                        <div class="row justify-content-evenly">
-                            <a class="btn btn-all mt-2" href="{% url 'products' %}"  aria-label="Return product management" rel="opener">Cancel</a>
-                            <button type="submit" class="btn btn-all mt-2">Edit</button>
-                        </div>
-                    </form>
-                </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row justify-content-evenly pt-2">
+                        <a class="btn btn-all mt-2" href="{% url 'products_all' %}" aria-label="Return to all products"
+                            rel="opener">Cancel</a>
+                        <button type="submit" class="btn btn-all mt-2">Submit</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

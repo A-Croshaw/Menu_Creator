@@ -1,12 +1,28 @@
 {% load static %}
-<div class="row">
-    <div class="col-8">
-        <p class="">- {{ ingredient.ingredient }}</p>
+<div class="row p-0 m-0">
+    <div class="col-5 col-sm-6">
+        <h6 class="p-0 m-0">Ingredients</h6>
+        <hr class=" m-0 p-1">
     </div>
-    <div class="col-2">
-        <p class="">{{ ingredient.quantity }}</p>
+    <div class="col-3">
+        <h6 class="p-0 m-0 text-end">Quantity</h6>
+        <hr class=" m-0 p-1">
     </div>
-    <div class="col-2">
-        <p class="">{{ ingredient.ingredientline_total }}</p>
+    <div class="col-4 col-sm-3">
+        <h6 class="p-0 m-0 text-end">Cost</h6>
+        <hr class=" m-0 p-1">
     </div>
 </div>
+{% for ingredient in ingredient %}
+<div class="row p-0 m-0">
+    <div class="col-5 col-sm-6">
+        <p class="p-0 m-0">- {{ ingredient.ingredient|title }}</p>
+    </div>
+    <div class="col-3">
+        <p class="p-0 m-0 text-end">{{ ingredient.quantity }}{{ ingredient.unit }}</p>
+    </div>
+    <div class="col-4 col-sm-3">
+        <p class="p-0 m-0 text-end">{{ ingredient.ingredientline_total }}</p>
+    </div>
+</div>
+{% endfor %}

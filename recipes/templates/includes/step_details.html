@@ -2,17 +2,19 @@
 <div hx-target="this">
     {% csrf_token %}
     <div class="row">
-        <div class="col-10">
+        <div class="col-12">
             <p class="">- {{ step}}</p>
         </div>
-        <div class="btn-view col-2">
-            <button hx-get="{% url 'update_step' step.id %}" hx-ta="outerHTML" class="btn btn-all">
-                edit
-            </button>
-            <button hx-post="{% url 'delete_step' step.id %}" hx-swap="outerHTML swap:0s"
-                class="btn btn-all">
-                delete
-            </button>
+        <div class="col-12">
+            <div class="row justify-content-end p-0 m-0">
+                <button hx-get="{% url 'update_step' step.id %}" hx-ta="outerHTML" class="btn text-primary btn-smalls">
+                    edit
+                </button>
+                <button hx-post="{% url 'delete_step' step.id %}" hx-swap="outerHTML swap:0s"
+                    class="btn text-danger btn-smalls">
+                    delete
+                </button>
+            </div>
         </div>
     </div>
 </div>

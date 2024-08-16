@@ -2,35 +2,77 @@
 {% load static %}
 {% block title %}Ingredients{% endblock %}
 {% block content %}
-<div class="container-fluid pt-md-3 pb-3">
-    <div class="row mt-3">
+<div class="container-fluid pt-md-3">
+    <div class="row mt-5 mt-md-2">
         <h1 class="text-center page-headers">{{recipe.recipeName|title}}</h1>
     </div>
-    <div class="row justify-content-center">
-        <div class="p-3 col-5">
-            <h2 class="">Ingredients</h2>
-            {% for ingredient in ingredient %}
-            {% include "includes/ingredient_details.html" %}
-            {% endfor %}
-            <div id="addingredientsform"></div>
-            <div class="btn-edit-view">
-                <button type="button" hx-get="{% url 'ingredient_add' %}" hx-target="#addingredientsform"
-                    hx-swap="beforeend" class="btn btn-all" aria-label="Click to edit ingredients ">
-                    Add
-                </button>
-            </div>
-            <div>
-                <a href="{% url 'method' pk=recipe.id%}" class="btn btn-all"
-                    aria-label="Click to edit ingredients ">
-                    next
-                </a>
-                <div>
-                    <a href="{% url 'recipe_view' recipe.id %}" class="btn btn-return mt-2" aria-label="Click to return">
-                        Return
-                    </a>
+    <div class="row gap-1 p-2">
+        <div class="details col py-3">
+            <div class="container-fluid">
+                <h2 class="sub-headers text-center">Details</h2>
+                <hr>
+                <div class="row p-0 m-0">
+                    <div class="col-6 col-md-5">
+                        <p><strong>Category:</strong></p>
+                        <p><strong>Subcategory:</strong></p>
+                        <p><strong>Portions:</strong></p>
+                    </div>
+                    <div class="col-6 col-md-7">
+                        <p>{{recipe.recipecategory|title}}</p>
+                        <p>{{recipe.recipesubcategory|title}}</p>
+                        <p>{{recipe.portions}}</p>
+                    </div>
+                </div>
+                <div class="row p-0 m-0">
+                    <h2 class="sub-headers text-center">Description</h2>
+                    <hr>
+                    <p class="text-center">{{recipe.description}}</p>
                 </div>
             </div>
         </div>
+        <div class="details col p-0 py-3">
+            <div class="container-fluid">
+                <div class="container-fluid">
+                    <h2 class="sub-headers text-center">Ingredients</h2>
+                    <hr>
+                    {% for ingredient in ingredient %}
+                    {% include "includes/ingredient_details.html" %}
+                    {% endfor %}
+                    <div id="addingredientsform"></div>
+                    <div class="row justify-content-evenly gap-1 pt-2">
+                        <div class="col text-center m-0 p-0">
+                            <a href="{% url 'recipe_edit' pk=recipe.id %}" class="btn btn-all btn-edit" rel="opener"
+                                aria-label="go back to previous page">
+                                Previous
+                            </a>
+                        </div>
+                        <div class="col text-center m-0 p-0">
+                            <button type="button" hx-get="{% url 'ingredient_add' %}" hx-target="#addingredientsform"
+                                hx-swap="beforeend" class="btn btn-all btn-edit"
+                                aria-label="Click to edit ingredients ">
+                                Add
+                            </button>
+                        </div>
+                        <div class="col text-center m-0 p-0">
+                            <a href="{% url 'method' pk=recipe.id%}" class="btn btn-all btn-edit"
+                                aria-label="Click to edit ingredients ">
+                                Next
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="method col py-3">
+            <div class="container-fluid">
+                <h2 class="sub-headers text-center">Method</h2>
+                <hr>
+                {% for step in step %}
+                <p class="p-0 m-0">- {{step}}</p>
+                {% endfor %}
+            </div>
+        </div>
     </div>
+</div>
 </div>
 {% endblock %}

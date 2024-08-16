@@ -1,37 +1,68 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Recipe View{% endblock %}
+{% block title %}Method{% endblock %}
 {% block content %}
-<div class="container-fluid pt-md-3 pb-3">
-    <div class="row mt-3">
+<div class="container-fluid pt-md-3">
+    <div class="row mt-5 mt-md-2">
         <h1 class="text-center page-headers">{{recipe.recipeName|title}}</h1>
     </div>
-    <div class="row justify-content-center">
-        <div class="p-3 col-5">
-            <h2 class="">Method</h2>
-            {% for step in step %}
-            {% include "includes/step_details.html" %}
-            {% endfor %}
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="p-3 col-5">
-            <div id="addstepform"></div>
-            <div class="btn-edit-view">
-                <button type="button" hx-get="{% url 'step_add' %}" hx-target="#addstepform"
-                    hx-swap="beforeend" class="btn btn-all" aria-label="Click to add step ">
-                    Add
-                </button>
+    <div class="row gap-1 p-2">
+        <div class="details col py-3">
+            <div class="container-fluid">
+                <h2 class="sub-headers text-center">Details</h2>
+                <hr>
+                <div class="row p-0 m-0">
+                    <div class="col-6 col-md-5">
+                        <p><strong>Category:</strong></p>
+                        <p><strong>Subcategory:</strong></p>
+                        <p><strong>Cost to make:</strong></p>
+                        <p><strong>Portions:</strong></p>
+                        <p><strong>Portion Cost:</strong></p>
+                    </div>
+                    <div class="col-6 col-md-7">
+                        <p>{{recipe.recipecategory|title}}</p>
+                        <p>{{recipe.recipesubcategory|title}}</p>
+                        <p>{{recipe.cost}}</p>
+                        <p>{{recipe.portions}}</p>
+                        <p>€{{recipe.portion_cost}}</p>
+                    </div>
+                </div>
             </div>
-            <div>
-                <a href="{% url 'recipe_view' recipe.id %}" class="btn"
-                    aria-label="Click to edit step ">
-                    Next
-                </a>
-                <div>
-                    <a href="{% url 'ingredients' pk=recipe.id %}" class="btn btn-return mt-2" aria-label="Click to return">
-                        Return
-                    </a>
+        </div>
+        <div class="details col p-0 py-3">
+            <div class="container-fluid">
+                <h2 class="sub-headers text-center">Ingredients</h2>
+                <hr>
+                {% include "includes/ingredient_details_view.html" %}
+            </div>
+        </div>
+        <div class="method col py-3">
+            <div class="container-fluid">
+                <h2 class="sub-headers text-center">Method</h2>
+                <hr>
+                {% for step in step %}
+                {% include "includes/step_details.html" %}
+                {% endfor %}
+                <div id="addstepform"></div>
+                <div class="row justify-content-evenly gap-1 pt-2">
+                    <div class="col text-center m-0 p-0">
+                        <a href="{% url 'ingredients' pk=recipe.id %}" class="btn btn-all btn-edit" rel="opener"
+                            aria-label="go back to previous page">
+                            Previous
+                        </a>
+                    </div>
+                    <div class="col text-center m-0 p-0">
+                        <button type="button" hx-get="{% url 'step_add' %}" hx-target="#addstepform" hx-swap="beforeend"
+                            class="btn btn-all btn-edit" aria-label="Click to add step ">
+                            Add
+                        </button>
+                    </div>
+                    <div class="col text-center m-0 p-0">
+                        <a href="{% url 'recipe_view' recipe.id %}" class="btn btn-all btn-edit"
+                            aria-label="Click to edit ingredients ">
+                            Finish
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

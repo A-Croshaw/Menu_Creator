@@ -2,15 +2,15 @@
 {% load static %}
 {% block title %}All Recipes{% endblock %}
 {% block content %}
-<div class="container-fluid pt-md-3 pb-3">
-    <div class="row mt-3">
+<div class="container-fluid pt-md-3">
+    <div class="row mt-5 mt-md-2">
         <h1 class="text-center page-headers"> Recipes</h1>
         <h2 class="sub-heading text-center">
             {% for s in sorted_recipesubcategories %}{{ s.view_recipesubcategory }}{% endfor %}
             {% for c in sorted_recipecategories %}{{ c.view_recipecategory }}{% endfor %}
         </h2>
     </div>
-    <div class="container d-flex flex-wrap flex-column page-search mt-3">
+    <div class="container d-flex flex-wrap flex-column page-search">
         <h2 class="text-center sub-heading">
             Search Recipes
         </h2>
@@ -18,12 +18,9 @@
             <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-all" type="submit"><i class="fas fa-search fa-xl"></i></button>
         </form>
-        <p class="sort-txt text-center pt-1">
-            {{ recipes|length }} recipes{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
-        </p>
     </div>
-    <div class="row justify-content-evenly mb-2">
-        <div class="col-4">
+    <div class="row justify-content-evenly gap-1 mb-2">
+        <div class="col">
             {% if request.user.is_superuser %}
             <div class="row py-2 justify-content-center">
                 <a class="btn btn-all" href="{% url 'recipe_add' %}" aria-label="Add recipes" rel="opener">
@@ -32,78 +29,105 @@
             </div>
             {% endif %}
         </div>
-        <div class="col-4">
+        <div class="col">
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-all" href="{% url 'recipes' %}" aria-label="All recipes" rel="opener">
+                    Categories
+                </a>
+            </div>
+        </div>
+        <div class="col">
             <div class="row py-2 justify-content-center">
                 <select id="sort-selector" class="rounded-2 sort-select">
                     <option>Sort by...</option>
                     <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Reset</option>
-                    <option value="recipeName_asc" {% if current_sorting == 'recipeName_asc' %}selected{% endif %}>Recipe (A-Z)
+                    <option value="recipeName_asc" {% if current_sorting == 'recipeName_asc' %}selected{% endif %}>
+                        Recipe (A-Z)
                     </option>
-                    <option value="recipeName_desc" {% if current_sorting == 'recipeName_desc' %}selected{% endif %}>Recipe (Z-A)
+                    <option value="recipeName_desc" {% if current_sorting == 'recipeName_desc' %}selected{% endif %}>
+                        Recipe (Z-A)
                     </option>
                     <option value="cost_asc" {% if current_sorting == 'cost_asc' %}selected{% endif %}>Cost (low to
                         high)
                     </option>
                     <option value="cost_desc" {% if current_sorting == 'cost_desc' %}selected{% endif %}>Cost (high to
                         low)</option>
-                    <option value="recipecategory_asc" {% if current_sorting == 'recipecategory_asc' %}selected{% endif %}>Category
+                    <option value="recipecategory_asc"
+                        {% if current_sorting == 'recipecategory_asc' %}selected{% endif %}>Category
                         (A-Z)</option>
-                    <option value="recipecategory_desc" {% if current_sorting == 'recipecategory_desc' %}selected{% endif %}>
+                    <option value="recipecategory_desc"
+                        {% if current_sorting == 'recipecategory_desc' %}selected{% endif %}>
                         Category
                         (Z-A)</option>
-                    <option value="recipesubcategory_asc" {% if current_sorting == 'recipesubcategory_asc' %}selected{% endif %}>Sub
+                    <option value="recipesubcategory_asc"
+                        {% if current_sorting == 'recipesubcategory_asc' %}selected{% endif %}>Sub
                         Category (A-Z)</option>
-                    <option value="recipesubcategory_desc" {% if current_sorting == 'recipesubcategory_desc' %}selected{% endif %}>
+                    <option value="recipesubcategory_desc"
+                        {% if current_sorting == 'recipesubcategory_desc' %}selected{% endif %}>
                         Sub
                         Category (Z-A)</option>
                 </select>
             </div>
         </div>
-        <div class="col-4">
-            <div class="row py-2 justify-content-center">
-                <a class="btn btn-all" href="{% url 'recipes' %}" aria-label="All recipes" rel="opener">
-                    Recipe Groups
-                </a>
-            </div>
-        </div>
     </div>
     <div class="row justify-content-center">
-        <div Class="row justify-content-evenly">
-            {% for recipe in recipes %}
-            <a href="{% url 'recipe_view' pk=recipe.id %}" aria-label="Delete " rel="noopener">
-                <div class="card recipe-card mb-3 p-0">
-                    <div class="card-body">
-                        <p class="recipe-card-text p-0 m-0">
-                            <strong>Recipe:</strong> {{ recipe.recipeName|title }}
+        <p class="sort-txt text-center pt-1">
+            {{ recipes|length }} recipes{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+            <span class="ms-1">
+                <a class="btn-reset btn-all rounded-2" href="{% url 'recipes_all' %}" rel="opener"
+                    aria-label="rest all filters">Reset</a>
+            </span></p>
+    </div>
+    <div Class="row justify-content-evenly">
+        {% for recipe in recipes %}
+        <div class="card mb-1 px-1">
+            <div class="card-body rounded my-1 p-2">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-3 text-center text-sm-start ">
+                        <p class="card-text p-0 m-0">
+                            <a class="card-link" href="{% url 'recipe_view' pk=recipe.id %}" aria-label="Delete "
+                                rel="opener">
+                                <strong>Recipe:</strong> {{ recipe.recipeName|title }}
+                            </a>
                         </p>
-                        <p class="recipe-card-text p-0 m-0">
-                            <strong>Category:</strong> {{ recipe.recipecategory|title }}
-                        </p>
-                        <p class="recipe-card-text p-0 m-0">
-                            <strong>Sub Category:</strong> {{ recipe.recipesubcategory|title }}
-                        </p>
-                        <p class="recipe-card-text p-0 m-0">
-                            <strong>Cost:</strong> {{ recipe.cost|title }}
-                        </p>
-                        <p class="recipe-card-text p-0 m-0">{{ recipe.decription }}
-                        </p>
-                        {% if request.user.is_superuser %}
-                        <div class="row justify-content-evenly m-0 p-0">
-                            <small class="col text-center pb-0 mb-0">
-                                <!--edit button-->
-                                <a href="{% url 'recipe_edit' pk=recipe.id %}" aria-label="Edit" rel="noopener">Edit</a>
-                            </small>
-                            <small class="col text-center pb-0 mb-0">
-                                <!--delete button-->
-                                <a class="text-danger" href="{% url 'recipe_delete' pk=recipe.id %}" aria-label="Delete " rel="noopener">Delete</a>
-                            </small>
-                        </div>
                     </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center text-sm-start">
+                        <p class="card-text p-0 m-0">
+                            <strong>Category:</strong> {{recipe.recipecategory|title}}
+                        </p>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center text-sm-start">
+                        <p class="card-text p-0 m-0">
+                            <strong>Sub:</strong> {{recipe.recipesubcategory|title}}
+                        </p>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center text-sm-start">
+                        <p class="card-text p-0 m-0">
+                            <strong>Portions:</strong> {{recipe.portions}}
+                        </p>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center text-sm-start">
+                        <p class="card-text p-0 m-0">
+                            <strong>Portion Cost:</strong> {{recipe.portion_cost}}
+                        </p>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-1 text-end">
+                        {% if request.user.is_superuser %}
+                        <small class="col text-center pb-0 mb-0 me-3">
+                            <!--edit button-->
+                            <a href="{% url 'recipe_edit' pk=recipe.id %}" aria-label="Edit" rel="opener">Edit</a>
+                        </small>
+                        <small class="col text-center pb-0 mb-0">
+                            <!--delete button-->
+                            <a class="text-danger" href="{% url 'recipe_delete' pk=recipe.id %}" aria-label="Delete "
+                                rel="opener">Delete</a>
+                        </small>
                         {% endif %}
+                    </div>
                 </div>
-            </a>
-            {% endfor %}
+            </div>
         </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

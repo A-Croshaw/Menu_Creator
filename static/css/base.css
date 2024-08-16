@@ -7,46 +7,45 @@
 
     /*--- Colours ---*/
     --white: #fff;
-    --nav-footer-bg: #770b0b;
-    --active-page: #fffb00;
-    --nav-hover: #fffb00;
+    --yellow: #fffb00;
     --bg-color: #a0a0a0;
-    --btn-all: #770b0b;
+    --red: #770b0b;
+    --black: #000;
+    --card-body: #c4c4c4;
+    --form-bg: #e4f6fc;
 
     /*--- Buttons ---*/
-    --btn-search-border: 2px solid #fff;
-    --btn-search-hover-border: 2px solid #fffb00;
-    --btn-border:2px solid #fff;
-    --btn-border-hover:2px solid #fffb00;
+    --btn-border: 2px solid var(--white);
+    --btn-border-hover: 2px solid var(--yellow);
+    --black-border: 2px solid var(--black);
 
     /*--- Shadows ---*/
-    --bt-shadows:5px -3px 15px 0px #000000e0;
+    --bt-shadows: 5px -3px 15px 0px #000000e0;
 
     /*--- borders ---*/
     --form-border: 3px solid #313131;
+    --view-border: 4px ridge var(--black);
 
     /*--- Nav ---*/
     --bs-offcanvas-width-left: 280px;
     --bs-offcanvas-width-right: 150px;
-    --nav-hover-shadow: 0px 6px 2px -4px #000000ef;
+    --yellow-shadow: 0px 6px 2px -4px #000000ef;
     --nav-dropdown-shadows: 5px -3px 15px 0px #000000e0;
-
-
-    /* Box Styling
-    --box-shadows: 2px -3px 8px 0 #000000c9;
-    --borders: 2px solid #000000;
-    --border-view: 3px groove #818181;*/
-}
-
-html,
-body {
-    height: 100%;
 }
 
 body {
     margin: 0;
     padding: 0;
     background-color: var(--bg-color);
+    font-family: var(--text-fonts);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: var(--headers);
 }
 
 /*------------ Select Dropdown ------------*/
@@ -54,7 +53,7 @@ select {
     appearance: none;
     outline: none;
     cursor: pointer;
-    background-color: var(--btn-all);
+    background-color: var(--red);
     border: var(--btn-border);
     color: var(--white);
     border-radius: 5px;
@@ -67,26 +66,37 @@ select {
 }
 
 .sort-select {
-    max-width: 200px;
+    max-width: 180px;
 }
 
 select:hover {
     border: var(--btn-border-hover);
-    color: var(--nav-hover);
+    color: var(--yellow);
 }
 
 option {   
     color: var(--white);
 }
+
 /*------------ Buttons ------------*/
+.btn-all,
 .btn-side-search,
-.btn-search {
-    border: var(--btn-search-border);
+.btn-nav-search {
+    border: var(--btn-border);
     color: var(--white);
-    background-color: transparent;
+    background-color: var(--red);
 }
 
-.btn-search {
+.btn-all {
+    max-width: 180px;
+    box-shadow: var(--bt-shadows);
+}
+
+.btn-edit{
+    min-width: 95px;
+}
+
+.btn-nav-search {
     width: 40px;
     height: 35px;
     padding: 0;
@@ -98,25 +108,21 @@ option {
     height: 30px;
 }
 
+.btn-all:hover,
 .btn-side-search:hover,
-.btn-search:hover {
-    border: var(--btn-search-hover-border);
-    color: var(--nav-hover);
-}
-
-.btn-all {
-    background-color: var(--btn-all);
-    color: var(--white);
-    max-width: 180px;
-    border: var(--btn-border);
-    box-shadow: var(--bt-shadows);
-    
-}
-
-.btn-all:hover {
-    background-color: var(--btn-all);
-    color: var(--nav-hover);
+.btn-nav-search:hover {
+    color: var(--yellow);
     border: var(--btn-border-hover);
+    background-color: var(--red);
+}
+
+.btn-reset {
+    text-decoration: none;
+    padding: 1px 4px 2px 4px;
+}
+
+.btn-smalls {
+    width: 60px;
 }
 
 /*------------ Header ------------*/
@@ -124,7 +130,7 @@ option {
 .nav-txt:hover,
 .bg-nav-dropdowns,
 .bg-nav {
-    background-color: var(--nav-footer-bg);
+    background-color: var(--red);
 }
 
 .nav-ac-headers,
@@ -138,16 +144,15 @@ option {
 .nav-headers:hover,
 .nav-side-txt:hover,
 .nav-txt:hover {
-    color: var(--nav-hover);
+    color: var(--yellow);
 }
 
 .nav-headers:hover {
-    box-shadow: var(--nav-hover-shadow);
+    box-shadow: var(--yellow-shadow);
 }
 
 .nav-txt,
 .nav-side-txt {
-    font-family: var(--text-fonts);
     font-size: 15px;
 }
 
@@ -172,7 +177,6 @@ option {
 }
 
 /*--- Screens md + ---*/
-
 .bg-nav-dropdowns {
     box-shadow: var(--nav-dropdown-shadows);
 }
@@ -244,7 +248,7 @@ option {
 /*------------ Footer ------------*/
 
 footer {
-    background-color: var(--nav-footer-bg);
+    background-color: var(--red);
     height: 50px;
 }
 
@@ -254,12 +258,11 @@ footer {
 }
 
 .footer-txt:hover {
-    color: var(--nav-hover);
+    color: var(--yellow);
 }
 
 /*------------ Generic ------------*/
 .page-headers {
-    font-family: var(--headers);
     font-size: 40px;
 }
 
@@ -267,82 +270,113 @@ input[name='q']::placeholder {
     color: #aab7c4;
 }
 
+input[name='q'] {
+    border: var(--black-border);
+}
+
 .page-search {
     max-width: 500px;
 }
 
-.sub-heading{
-    font-family: var(--headers);
+.sub-heading {
     font-size: 30px;
 }
 
-/*------------ Forms --------------*/
-.add-form{
-    width: 460px;
-    border: var(--form-border);
-    font-family: var(--headers);
-    font-size: 22px;
-    font-weight: 600;
-    margin:10px
-}
-.form-border{
-    
-    
-    padding: 10px;
-}
-/*------------ Products -------------*/
-
-.product-sub-heading {
-    font-family: var(--headers);
+.category-headers {
     font-size: 30px;
 }
 
-.product-home-headers {
-    font-family: var(--headers);
-    font-size: 30px;
-}
-
-.product-card-text {
-    font-family: var(--text-fonts);
+.sort-txt {
     font-size: 16px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: var(--black);
+}
+
+.card-text {
+    font-size: 18px;
     font-weight: 400;
 }
 
-.product-card {
-    width: 300px;
+.card-body {
+    background-color: var(--card-body);
 }
 
-.product-form {
-    max-width: 450px;
+.details,
+.method,
+.description {
+    flex: 100%;
+    border: var(--view-border);
+    background-color: var(--card-body);
+    overflow: hidden;
 }
 
-.product-form-txt {
-    font-family: var(--text-fonts);
+.add-box {
+    max-width: 600px;
+    background-color: var(--form-bg);
+    border: var(--view-border);
     font-size: 18px;
 }
 
-.product-form-heading {
-    font-family: var(--headers);
-    font-size: 26px;
-    font-weight: 700;
+/*------------ Forms --------------*/
+.add-ingredientd-form input {
+    width: 100px;
+}
+
+.add-step-form,
+.recipe-form,
+.add-ingredientd-form {
+    background-color: var(--form-bg);
+}
+
+.add-step-form,
+.add-ingredientd-form {
+    font-size: 20px;
+}
+
+.recipe-form {
+    max-width: 95%;
+}
+
+.add-form select,
+.add-ingredientd-form select,
+.recipe-form select {
+    max-width: 230px;
+    font-family: var(--text-fonts);
 }
 
 /*------------ Media Queries ------------*/
-@media (min-width: 400px) {
+@media screen and (min-width: 400px) {
     .page-headers {
-        font-family: var(--headers);
         font-size: 50px;
     }
 }
 
-@media (min-width: 768px) {
-    .content-offset {
-        margin-top: 110px;
+@media screen and (min-width: 680px) {
+    .details {
+        flex: 45%;
     }
 }
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 768px) {
     .content-offset {
-        margin-top: 55px;
+        margin-top: 90px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .content-offset {
+        margin-top: 35px;
+    }
+
+    .method {
+        flex: 30%;
+        max-width: 30%;
+    }
+
+    .details {
+        flex: 30%;
     }
 }

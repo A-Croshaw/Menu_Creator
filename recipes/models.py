@@ -4,6 +4,14 @@ from django.db.models import Sum
 from products.models import Product
 
 
+#Choice Field
+UNITS = (
+    ('g', 'g'),
+    ('ml', 'ml'),
+    (' ', ' '),
+    )
+
+
 class RecipeCategory(models.Model):
     """ Creates Categories for the Recipes """
     class Meta:
@@ -16,7 +24,7 @@ class RecipeCategory(models.Model):
     def __str__(self):
         return str(self.recipecategory)
 
-    def get_view_category(self):
+    def get_view_recipecategory(self):
         return self.view_recipecategory
 
 
@@ -107,6 +115,11 @@ class Ingredients(models.Model):
     quantity = models.DecimalField(
         max_digits=10,
         decimal_places=0
+    )
+    unit = models.CharField(
+        max_length=50,
+        choices=UNITS,
+        default="g",
     )
     ingredientline_total = models.DecimalField(
         max_digits=6,

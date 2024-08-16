@@ -2,15 +2,15 @@
 {% load static %}
 {% block title %}All Products{% endblock %}
 {% block content %}
-<div class="container-fluid pt-md-3 pb-3">
-    <div class="row mt-3">
+<div class="container-fluid pt-md-3">
+    <div class="row mt-5 mt-md-2">
         <h1 class="text-center page-headers"> Products</h1>
-        <h2 class="product-sub-heading text-center">
+        <h2 class="sub-heading text-center">
             {% for s in sorted_subcategories %}{{ s.view_subcategory }}{% endfor %}
             {% for c in sorted_categories %}{{ c.view_category }}{% endfor %}
         </h2>
     </div>
-    <div class="container d-flex flex-wrap flex-column page-search mt-3">
+    <div class="container d-flex flex-wrap flex-column page-search">
         <h2 class="text-center product-sub-heading">
             Search Products
         </h2>
@@ -18,12 +18,9 @@
             <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-all" type="submit"><i class="fas fa-search fa-xl"></i></button>
         </form>
-        <p class="sort-txt text-center pt-1">
-            {{ products|length }} products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
-        </p>
     </div>
-    <div class="row justify-content-evenly mb-2">
-        <div class="col-4">
+    <div class="row justify-content-evenly gap-1 mb-2">
+        <div class="col">
             {% if request.user.is_superuser %}
             <div class="row py-2 justify-content-center">
                 <a class="btn btn-all" href="{% url 'product_add' %}" aria-label="Add Product" rel="opener">
@@ -32,7 +29,14 @@
             </div>
             {% endif %}
         </div>
-        <div class="col-4">
+        <div class="col">
+            <div class="row py-2 justify-content-center">
+                <a class="btn btn-all" href="{% url 'products' %}" aria-label="All Product" rel="opener">
+                    Categories
+                </a>
+            </div>
+        </div>
+        <div class="col">
             <div class="row py-2 justify-content-center">
                 <select id="sort-selector" class="rounded-2 sort-select">
                     <option>Sort by...</option>
@@ -59,58 +63,70 @@
                 </select>
             </div>
         </div>
-        <div class="col-4">
-            <div class="row py-2 justify-content-center">
-                <a class="btn btn-all" href="{% url 'products' %}" aria-label="All Product" rel="opener">
-                    Product Groups
-                </a>
-            </div>
-        </div>
     </div>
     <div class="row justify-content-center">
-        <div Class="row justify-content-evenly">
-            {% for product in products %}
-            <div class="card product-card mb-3 p-0">
-                <div class="card-body">
-                    <p class="product-card-text p-0 m-0">
-                        <strong>Product:</strong> {{ product.name|title }}
-                    </p>
-                    <p class="product-card-text p-0 m-0">
-                        <strong>Category:</strong> {{ product.category|title }}
-                    </p>
-                    <p class="product-card-text p-0 m-0">
-                        <strong>Sub Category:</strong> {{ product.subcategory|title }}
-                    </p>
-                    <p class="product-card-text p-0 m-0">
-                        <strong>Cost:</strong> {{ product.cost|title }}
-                    </p>
-                    <p class="product-card-text p-0 m-0">
-                        {% if product.quantity > 0%}
-                        <strong>Quantity:</strong> {{ product.quantity }}
-                        {% endif %}
-                        {% if product.weight > 0%}
-                        <strong>Weight:</strong> {{ product.weight }}g
-                        {% endif %}
-                        {% if product.liquid_vol > 0%}
-                        <strong>Volume:</strong> {{ product.liquid_vol }}ml
-                        {% endif %}
-                    </p>
-                    {% if request.user.is_superuser %}
-                    <div class="row justify-content-evenly m-0 p-0">
-                        <small class="col text-center pb-0 mb-0">
-                            <!--edit button-->
-                            <a href="{% url 'product_edit' product.id %}" aria-label="Edit" rel="noopener">Edit</a>
-                        </small>
-                        <small class="col text-center pb-0 mb-0">
-                            <!--delete button-->
-                            <a class="text-danger" href="{% url 'product_delete' product.id %}" aria-label="Delete " rel="noopener">Delete</a>
-                        </small>
+        <p class="sort-txt text-center pt-1">
+            {{ products|length }} products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+            <span class="ms-1">
+                <a class="btn-reset btn-all rounded-2" href="{% url 'products_all' %}"
+                    rel="opener" aria-label="rest all filters">Reset</a>
+            </span></p>
+    </div>
+    <div Class="row justify-content-evenly">
+        {% for product in products %}
+        <div class="card mb-1 px-1">
+            <div class="card-body rounded my-1 p-2">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-3 text-center text-sm-start ">
+                        <p class="card-text p-0 m-0">
+                            <strong>Product:</strong> {{ product.name|title }}
+                        </p>
                     </div>
-                    {% endif %}
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center text-sm-start">
+                        <p class="card-text p-0 m-0">
+                            <strong>Category:</strong> {{ product.category|title }}
+                        </p>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center text-sm-start">
+                        <p class="card-text p-0 m-0">
+                            <strong>Sub:</strong> {{product.subcategory|title}}
+                        </p>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center text-sm-start">
+                        <p class="card-text p-0 m-0">
+                            {% if product.quantity > 0%}
+                            <strong>Quantity:</strong> {{ product.quantity }}
+                            {% endif %}
+                            {% if product.weight > 0%}
+                            <strong>Weight:</strong> {{ product.weight }}g
+                            {% endif %}
+                            {% if product.liquid_vol > 0%}
+                            <strong>Volume:</strong> {{ product.liquid_vol }}ml
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 text-center text-sm-start">
+                        <p class="card-text p-0 m-0">
+                            <strong>Cost:</strong> €{{ product.cost|title }}
+                        </p>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 col-xxl-1 text-end">
+                        {% if request.user.is_superuser %}
+                        <small class="col text-end pb-0 mb-0 me-3">
+                            <!--edit button-->
+                            <a href="{% url 'product_edit' product.id %}" aria-label="Edit" rel="opener">Edit</a>
+                        </small>
+                        <small class="col text-end pb-0 mb-0">
+                            <!--delete button-->
+                            <a class="text-danger" href="{% url 'product_delete' product.id %}" aria-label="Delete "
+                                rel="opener">Delete</a>
+                        </small>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

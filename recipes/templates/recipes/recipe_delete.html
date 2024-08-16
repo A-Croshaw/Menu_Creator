@@ -3,16 +3,25 @@
 {% block title %}Recipe Delete{% endblock %}
 
 {% block content %}
-<div class="container-fluid pt-md-3 pb-3">
-    <div class="row mt-5 mt-md-2">
+<div class="container pt-md-3">
+    <div class="row mt-5 mt-md-2 mb-5">
         <h1 class="text-center page-headers">Deleting Conformation</h1>
     </div>
+    <div class="row justify-content-center my-5 py-5">
+        <h2 class="text-center mb-5">Are you sure you want to delete</h2>
+        <h2 class="text-center"><strong>"{{recipe.recipeName|title}}"</strong>?</h2>
+    </div>
     <form action="." method="POST">{% csrf_token %}
-        <div class="row justify-content-center">
-            <p class="view-txt">Are you sure you want to delete "{{object.recipeName}}"?</p>
-            <div class=" mt-5">
-                <input type="submit" value="Confirm" class="btn btn-all">
-                <a href="{% url 'recipes' %}" class="btn btn-all w-25">Cancel</a>
+        <div class="row gap-1">
+            <div class="col">
+                <div class="row py-2 justify-content-center">
+                    <a href="{% url 'recipe_view' pk=recipe.id %}" class="btn btn-all" rel="opener" aria-label="Click to return to recipe">Cancel</a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row py-2 justify-content-center">
+                    <input type="submit" value="Confirm" class="btn btn-all">
+                </div>
             </div>
         </div>
     </form>

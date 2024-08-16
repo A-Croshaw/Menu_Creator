@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product
+from .models import Product, Category, Subcategory
 
 
 class ProductForm(forms.ModelForm):
@@ -22,7 +22,17 @@ class ProductForm(forms.ModelForm):
                   "category": "Category",
                   "subcategory": "Subcategory",
                   "cost": "Cost",
-                  "weight": "Weight",
+                  "weight": "Weight 'g' ",
                   "quantity": "Quantity",
-                  "liquid_vol" : "Volume" 
+                  "liquid_vol" : "Volume 'ml'" 
                   }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        subcategory = Subcategory.objects.all()
+        view_subcategory = [
+            (s.id, s.get_view_subcategory()) for s in subcategory]
+        self.fields['subcategory'].choices = view_subcategory
+        category = Category.objects.all()
+        view_category = [(c.id, c.get_view_category())
+                               for c in category]
+        self.fields['category'].choices = view_category

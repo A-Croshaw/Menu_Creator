@@ -2,51 +2,80 @@
 {% load static %}
 {% block title %}Recipe View{% endblock %}
 {% block content %}
-<div class="container-fluid pt-md-3 pb-3">
-    <div class="row mt-3">
+<div class="container-fluid pt-md-3">
+    <div class="row mt-5 mt-md-2">
         <h1 class="text-center page-headers">{{recipe.recipeName|title}}</h1>
     </div>
-    <div class="row justify-content-center">
-        <div class="p-3 col-5">
-            <h2 class="sub-headers">Details</h2>
-            <p>Recipe for a {{recipe.recipecategory|title}}</p>
-            <p>Recipe for a {{recipe.recipesubcategory|title}}</p>
-            <p>Description {{recipe.description}}</p>
-            <p>Cost {{recipe.cost}}</p>
-            <p>portion Cost {{recipe.portion_cost}}</p>
-            <p>portions {{recipe.portions}}</p>
+    <div class="row gap-1 p-2">
+        <div class="description col py-3">
+            <h2 class="sub-headers text-center">Description</h2>
+            <hr>
+            <p class="text-center">{{recipe.description}}</p>
+        </div>
+        <div class="details col py-3">
+            <div class="container-fluid">
+                <h2 class="sub-headers text-center">Details</h2>
+                <hr>
+                <div class="row p-0 m-0">
+                    <div class="col-6 col-md-5">
+                        <p><strong>Category:</strong></p>
+                        <p><strong>Subcategory:</strong></p>
+                        <p><strong>Cost to make:</strong></p>
+                        <p><strong>Portions:</strong></p>
+                        <p><strong>Portion Cost:</strong></p>
+                    </div>
+                    <div class="col-6 col-md-7">
+                        <p>{{recipe.recipecategory|title}}</p>
+                        <p>{{recipe.recipesubcategory|title}}</p>
+                        <p>{{recipe.cost}}</p>
+                        <p>{{recipe.portions}}</p>
+                        <p>€{{recipe.portion_cost}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="details col p-0 py-3">
+            <div class="container-fluid">
+                <h2 class="sub-headers text-center">Ingredients</h2>
+                <hr>
+                {% include "includes/ingredient_details_view.html" %}
+            </div>
+        </div>
+        <div class="method col py-3">
+            <div class="container-fluid">
+                <h2 class="sub-headers text-center">Method</h2>
+                <hr>
+                {% for step in step %}
+                <p class="p-0 m-0">- {{step}}</p>
+                {% endfor %}
+            </div>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="p-3 col-5">
-            <h2 class="">Ingredients</h2>
-            {% for ingredient in ingredient %}
-            {% include "includes/ingredient_details_view.html" %}
-            {% endfor %}
+    <div class="row justify-content-evenly gap-1 mb-2">
+        <div class="col">
+            {% if request.user.is_superuser %}
+            <div class="row py-2 justify-content-center">
+                <a href="{% url 'recipe_edit' pk=recipe.id %}" class="btn btn-all mt-2" rel="opener"aria-label="Click to edit recipe ">
+                    Edit
+                </a>
+            </div>
+            {% endif %}
         </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="p-3 col-5">
-            <h2 >Method</h2>
-            {% for step in step %}
-            {% include "includes/step_details_view.html" %}
-            {% endfor %}
+        <div class="col">
+            {% if request.user.is_superuser %}
+            <div class="row py-2 justify-content-center">
+                <a href="{% url 'recipe_delete' recipe.id %}" class="btn btn-all mt-2" rel="opener" aria-label="Click to delete recipe">
+                    Delete
+                </a>
+            </div>
+            {% endif %}
         </div>
-    </div>
-    <div>
-        <a href="{% url 'recipe_edit' pk=recipe.id %}" class="btn btn-all"
-            aria-label="Click to edit step ">
-            edit
-        </a>
-        <div>
-            <a href="{% url 'recipe_delete' recipe.id %}" class="btn btn-all mt-2" aria-label="Click to return">
-                delete
-            </a>
-        </div>
-        <div>
-            <a href="{% url 'recipes' %}" class="btn btn-all mt-2" aria-label="Click to return">
-                Return
-            </a>
+        <div class="col">
+            <div class="row py-2 justify-content-center">
+                <a href="{% url 'recipes_all' %}" class="btn btn-all mt-2" rel="opener" aria-label="Click to return to all recipes">
+                    Return
+                </a>
+            </div>
         </div>
     </div>
 </div>

@@ -1,8 +1,17 @@
 {% load static %}
-<form method="POST" hx-target="this" hx-swap="outerHTML" hx-post="." id="step-form">
+<form method="POST" hx-target="this" hx-swap="outerHTML" hx-post="." id="step-form" class="add-step-form rounded-2 p-3">
     {% csrf_token %}
-    {{ form }}
-    <div class="btn-edit-view pb-2">
+    <div class="col">
+        {% for field in form %}
+        <div class="row justify-content-center text-center pb-2">
+            {{field.label_tag}}
+        </div>
+        <div class="row justify-content-center pb-2 ">
+            {{field}}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row justify-content-center pb-2">
         {% if step %}
         <button type="submit" hx-post="{% url 'update_step' step.id %}" class="btn btn-all mt-2">
             Submit
@@ -11,6 +20,9 @@
         <button type="submit" id="step-form" class="btn btn-all mt-2">
             Add
         </button>
+        <a href="." class="btn btn-all mt-2" aria-label="Click to edit ingredients ">
+            Cancel
+        </a>
         {% endif %}
     </div>
 </form>

@@ -2,8 +2,8 @@
 {% load static %}
 {% block title %}Recie Manager{% endblock %}
 {% block content %}
-<div class="container-fluid pt-5 pt-md-3">
-    <div class="row mt-3">
+<div class="container-fluid pt-md-3">
+    <div class="row mt-5 mt-md-2">
         <h1 class="text-center page-headers"> Recipe Manager</h1>
     </div>
     <div class="row justify-content-evenly my-4">
@@ -27,12 +27,12 @@
     <div class="row justify-content-evenly">
         <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
             <div class="row py-2 justify-content-center">
-                <h2 class="product-home-headers text-center">
+                <h2 class="category-headers text-center">
                     Starter Recipes
                 </h2>
             </div>
             <div class="row py-2 justify-content-center">
-                <a class="btn btn-all" href="{% url 'recipes_all' %}?recipecategory=starters"
+                <a class="btn btn-all" href="{% url 'recipes_all' %}?recipesubcategory=starters"
                     aria-label="View All starters" rel="opener">
                     All Starters
                 </a>
@@ -58,12 +58,12 @@
         </div>
         <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
             <div class="row py-2 justify-content-center">
-                <h2 class="product-home-headers text-center">
+                <h2 class="Category text-center">
                     Main Course Recipes
                 </h2>
             </div>
             <div class="row py-2 justify-content-center">
-                <a class="btn btn-all" href="{% url 'recipes_all' %}?recipecategory=mains" aria-label="View All Mains"
+                <a class="btn btn-all" href="{% url 'recipes_all' %}?recipesubcategory=mains" aria-label="View All Mains"
                     rel="opener">
                     All Main
                 </a>
@@ -89,12 +89,12 @@
         </div>
         <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
             <div class="row py-2 justify-content-center">
-                <h2 class="product-home-headers text-center">
+                <h2 class="Category text-center">
                     Desserts Recipes
                 </h2>
             </div>
             <div class="row py-2 justify-content-center">
-                <a class="btn btn-all" href="{% url 'recipes_all' %}?recipecategory=desserts"
+                <a class="btn btn-all" href="{% url 'recipes_all' %}?recipesubcategory=desserts"
                     aria-label="View All Desserts" rel="opener">
                     All Desserts
                 </a>
@@ -120,12 +120,12 @@
         </div>
         <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
             <div class="row py-2 justify-content-center">
-                <h2 class="product-home-headers text-center">
+                <h2 class="Category text-center">
                     Dessert Sauces Recipes
                 </h2>
             </div>
             <div class="row py-2 justify-content-center">
-                <a class="btn btn-all" href="{% url 'recipes_all' %}?recipecategory=dessert-sauces"
+                <a class="btn btn-all" href="{% url 'recipes_all' %}?recipesubcategory=dessert-sauces"
                     aria-label="View All Dessert Sauces" rel="opener">
                     All Dessert Sauces
                 </a>
@@ -151,12 +151,12 @@
         </div>
         <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
             <div class="row py-2 justify-content-center">
-                <h2 class="product-home-headers text-center">
+                <h2 class="Category text-center">
                     Sauces Recipes
                 </h2>
             </div>
             <div class="row py-2 justify-content-center">
-                <a class="btn btn-all" href="{% url 'recipes_all' %}?recipecategory=sauces" aria-label="View All Sauces"
+                <a class="btn btn-all" href="{% url 'recipes_all' %}?recipesubcategory=sauces" aria-label="View All Sauces"
                     rel="opener">
                     All Sauces
                 </a>
@@ -182,12 +182,12 @@
         </div>
         <div class="col-4 col-sm-3 col-lg-2 mx-1 mb-4">
             <div class="row py-2 justify-content-center">
-                <h2 class="product-home-headers text-center">
+                <h2 class="Category text-center">
                     Sides Recipes
                 </h2>
             </div>
             <div class="row py-2 justify-content-center">
-                <a class="btn btn-all" href="{% url 'recipes_all' %}?recipecategory=sides" aria-label="View All Sides"
+                <a class="btn btn-all" href="{% url 'recipes_all' %}?recipesubcategory=sides" aria-label="View All Sides"
                     rel="opener">
                     All Sides
                 </a>
